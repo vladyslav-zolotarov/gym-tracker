@@ -12,17 +12,10 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@lib/*": ["src/lib/*"],
+      "@types/*": ["src/types/*"],
     },
-
-    // "baseUrl": "./src",
-    // "paths": {
-    //   "@components/*": ["./components/*"],
-    // "@ui/*": ["./components/common/ui/*"],
-    // "@pages/*": ["./pages/*"],
-    // "@hooks/*": ["./hooks/*"],
-    // "@api/*": ["./api/*"],
-    // "@utils/*": ["./utils/*"],
-    // },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -38,6 +31,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src"],
+  "include": ["src", "src/types/pocketbase-types.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
