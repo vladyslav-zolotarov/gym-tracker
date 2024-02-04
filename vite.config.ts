@@ -7,7 +7,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
     define: {
-      'process.env.REACT_APP_PB_LINK': JSON.stringify(env.REACT_APP_PB_LINK),
+      'process.env.PB_TYPEGEN_URL': JSON.stringify(env.PB_TYPEGEN_URL),
+      'process.env.PB_TYPEGEN_EMAIL': JSON.stringify(env.PB_TYPEGEN_EMAIL),
+      'process.env.PB_TYPEGEN_PASSWORD': JSON.stringify(
+        env.PB_TYPEGEN_PASSWORD
+      ),
     },
     plugins: [react()],
     resolve: {
@@ -15,6 +19,9 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, './src'),
         '@assets': path.resolve(__dirname, './src/assets'),
         '@components': path.resolve(__dirname, './src/components'),
+        '@pages': path.resolve(__dirname, './src/pages'),
+        '@lib': path.resolve(__dirname, './src/lib'),
+        '@types': path.resolve(__dirname, './src/types'),
       },
     },
   };
