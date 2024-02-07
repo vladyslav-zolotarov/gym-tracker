@@ -1,6 +1,5 @@
 import {
   Button,
-  Center,
   Flex,
   Heading,
   Input,
@@ -11,26 +10,32 @@ import {
   FormLabel,
   FormErrorMessage,
   Spinner,
-  useToast,
   Card,
 } from '@chakra-ui/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
 import GoogleIcon from '@assets/icons/google.svg';
 import { SignInForm } from '@/types/form-types';
+import { useEffect } from 'react';
+import { useUserContext } from '@/context/UserContext';
 
 export const SignInPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isLoading },
+    formState: { errors },
   } = useForm<SignInForm>({ mode: 'onSubmit' });
   const { mutate: onSignInGoogle } = useSignInGoogle();
   const { mutate: onSignIn, isPending } = useSignIn();
+  const { state } = useUserContext();
 
   const onSubmit: SubmitHandler<SignInForm> = async data => {
     onSignIn(data);
   };
+
+  useEffect(() => {
+    console.log('userContext', state);
+  }, [state]);
 
   return (
     <Flex
