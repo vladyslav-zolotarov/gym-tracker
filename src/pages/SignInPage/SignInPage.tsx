@@ -2,34 +2,34 @@ import {
   Button,
   Flex,
   Heading,
-  Input,
   Stack,
   Text,
   Image,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
   Spinner,
   Card,
 } from '@chakra-ui/react';
+import { FormInputGroup } from '@components/ui/FormInputGroup';
+import { FormInput } from '@components/ui/FormInput';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
 import GoogleIcon from '@assets/icons/google.svg';
-import { TSignInForm } from '@/types/form-types';
 import { useEffect } from 'react';
 import { useUserContext } from '@services/state/userContext';
+import { emailRegister } from '@helpers/formRedisters/emailRegister';
+import { TFormInputs } from '@/types/form-types';
+import { passwordRegister } from '@/helpers/formRedisters/passwordRegister';
 
 export const SignInPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TSignInForm>({ mode: 'onSubmit' });
+  } = useForm<TFormInputs>({ mode: 'onSubmit' });
   const { mutate: onSignInGoogle } = useSignInGoogle();
   const { mutate: onSignIn, isPending } = useSignIn();
   const { state } = useUserContext();
 
-  const onSubmit: SubmitHandler<TSignInForm> = async data => {
+  const onSubmit: SubmitHandler<TFormInputs> = async data => {
     onSignIn(data);
   };
 
@@ -67,40 +67,26 @@ export const SignInPage = () => {
         noValidate
         onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing='4'>
-          <FormControl isInvalid={!!errors.email?.message}>
-            <FormLabel>E-mail</FormLabel>
-            <Input
+          <FormInputGroup
+            label='E-mail'
+            errors={errors.email?.message}>
+            <FormInput
               placeholder='E-mail'
               type='email'
               aria-describedby='helper-text-email'
-              {...register('email', {
-                required: 'This field is required. Please enter your email!',
-                pattern: {
-                  value: /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
-                  message: 'Invalid email.',
-                },
-              })}
+              {...emailRegister(register)}
             />
-            <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-          </FormControl>
-          <FormControl
-            isInvalid={!!errors.password?.message}
-            mb='20px'>
-            <FormLabel>Password</FormLabel>
-            <Input
+          </FormInputGroup>
+          <FormInputGroup
+            label='Password'
+            errors={errors.password?.message}>
+            <FormInput
               placeholder='Password'
               type='password'
               aria-describedby='helper-text-password'
-              {...register('password', {
-                required: 'This field is required. Please enter your password!',
-                minLength: {
-                  value: 5,
-                  message: 'The password must be at least 5 characters long.',
-                },
-              })}
+              {...passwordRegister(register)}
             />
-            <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-          </FormControl>
+          </FormInputGroup>
           <Button
             type='submit'
             isLoading={isPending}
