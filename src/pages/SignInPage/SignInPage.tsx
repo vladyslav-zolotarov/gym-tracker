@@ -8,16 +8,14 @@ import {
   Spinner,
   Card,
 } from '@chakra-ui/react';
-import { FormInputGroup } from '@components/ui/FormInputGroup';
-import { FormInput } from '@components/ui/FormInput';
+import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
-import GoogleIcon from '@assets/icons/google.svg';
-import { useEffect } from 'react';
+import { FormInputGroup, FormInput } from '@components/ui/index';
+import { emailRegister, passwordRegister } from '@helpers/formRedisters/index';
 import { useUserContext } from '@services/state/userContext';
-import { emailRegister } from '@helpers/formRedisters/emailRegister';
 import { TFormInputs } from '@/types/form-types';
-import { passwordRegister } from '@/helpers/formRedisters/passwordRegister';
+import GoogleIcon from '@assets/icons/google.svg';
 
 export const SignInPage = () => {
   const {
