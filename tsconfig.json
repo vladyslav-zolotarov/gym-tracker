@@ -15,8 +15,7 @@
       "@pages/*": ["src/pages/*"],
       "@lib/*": ["src/lib/*"],
       "@types/*": ["src/types/*"],
-      "@context/*": ["src/context/*"],
-      "@reducer/*": ["src/reducer/*"],
+      "@services/*": ["src/services/*"],
     },
 
     /* Bundler mode */

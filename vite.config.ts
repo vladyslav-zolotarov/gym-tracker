@@ -22,8 +22,7 @@ export default defineConfig(({ mode }) => {
         '@pages': path.resolve(__dirname, './src/pages'),
         '@lib': path.resolve(__dirname, './src/lib'),
         '@types': path.resolve(__dirname, './src/types'),
-        '@context': path.resolve(__dirname, './src/context'),
-        '@reducer': path.resolve(__dirname, './src/reducer'),
+        '@services': path.resolve(__dirname, './src/services'),
       },
     },
   };

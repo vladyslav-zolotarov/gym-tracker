@@ -15,21 +15,21 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
 import GoogleIcon from '@assets/icons/google.svg';
-import { SignInForm } from '@/types/form-types';
+import { TSignInForm } from '@/types/form-types';
 import { useEffect } from 'react';
-import { useUserContext } from '@/context/UserContext';
+import { useUserContext } from '@services/state/userContext';
 
 export const SignInPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInForm>({ mode: 'onSubmit' });
+  } = useForm<TSignInForm>({ mode: 'onSubmit' });
   const { mutate: onSignInGoogle } = useSignInGoogle();
   const { mutate: onSignIn, isPending } = useSignIn();
   const { state } = useUserContext();
 
-  const onSubmit: SubmitHandler<SignInForm> = async data => {
+  const onSubmit: SubmitHandler<TSignInForm> = async data => {
     onSignIn(data);
   };
 

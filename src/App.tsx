@@ -1,6 +1,6 @@
 import { Box, Button, Container, useColorMode } from '@chakra-ui/react';
 import { SignInPage } from './pages/SignInPage/SignInPage';
-import { UserProvider } from '@context/UserContext';
+import { UserProvider } from '@services/providers/UserProvider';
 
 function App() {
   // const [userState, dispatch] = useReducer(userReducer, undefined);

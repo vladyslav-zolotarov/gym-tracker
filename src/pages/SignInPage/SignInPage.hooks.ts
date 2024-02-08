@@ -1,17 +1,17 @@
 import { pb } from '@/lib/pocketbase';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@chakra-ui/react';
-import { SignInForm } from '@/types/form-types';
+import { TSignInForm } from '@/types/form-types';
 import { Collections, UsersResponse } from '@/types/pocketbase-types';
-import { useUserContext } from '@/context/UserContext';
-import { UserActionsTypes } from '@/reducer/userReducer';
+import { useUserContext } from '@services/state/userContext';
+import { UserActionsTypes } from '@services/reducers/userReducer';
 
 export const useSignIn = () => {
   const { dispatch } = useUserContext();
   const toast = useToast();
 
   return useMutation({
-    mutationFn: async ({ email, password }: SignInForm) =>
+    mutationFn: async ({ email, password }: TSignInForm) =>
       await pb
         .collection(Collections.Users)
         .authWithPassword<UsersResponse>(email, password),
