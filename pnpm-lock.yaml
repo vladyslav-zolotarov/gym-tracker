@@ -1,10 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@chakra-ui/icons': ^2.1.1
   '@chakra-ui/react': ^2.8.2
   '@emotion/react': ^11.11.3
   '@emotion/styled': ^11.11.0
+  '@fontsource/raleway': ^5.0.16
   '@tanstack/react-query': ^5.18.1
+  '@tanstack/react-router': ^1.15.23
+  '@tanstack/router-vite-plugin': ^1.15.22
   '@types/node': ^20.11.16
   '@types/react': ^18.2.43
   '@types/react-dom': ^18.2.17
@@ -25,10 +29,13 @@ specifiers:
   vite: ^5.0.8
 
 dependencies:
+  '@chakra-ui/icons': 2.1.1_react@18.2.0
   '@chakra-ui/react': 2.8.2_2ivuigtzv43yvqnshyrl6k2apq
   '@emotion/react': 11.11.3_z4qn5m62jnw5xrigtnmlk62un4
   '@emotion/styled': 11.11.0_dja5vsqdtfrc7bjpqfim3wovpe
+  '@fontsource/raleway': 5.0.16
   '@tanstack/react-query': 5.18.1_react@18.2.0
+  '@tanstack/react-router': 1.15.23_biqbaboplfbrettd7655fr4n2y
   framer-motion: 11.0.3_biqbaboplfbrettd7655fr4n2y
   pocketbase: 0.21.0
   pocketbase-typegen: 1.2.1
@@ -37,6 +44,7 @@ dependencies:
   react-hook-form: 7.50.0_react@18.2.0
 
 devDependencies:
+  '@tanstack/router-vite-plugin': 1.15.22
   '@types/node': 20.11.16
   '@types/react': 18.2.51
   '@types/react-dom': 18.2.18
@@ -360,6 +368,16 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@chakra-ui/icon/3.2.0_react@18.2.0:
+    resolution: {integrity: sha512-xxjGLvlX2Ys4H0iHrI16t74rG9EBcpFvJ3Y3B7KMQTrnW34Kf7Da/UC8J67Gtx85mTHW020ml85SVPKORWNNKQ==}
+    peerDependencies:
+      '@chakra-ui/system': '>=2.0.0'
+      react: '>=18'
+    dependencies:
+      '@chakra-ui/shared-utils': 2.0.5
+      react: 18.2.0
+    dev: false
+
   /@chakra-ui/icon/3.2.0_woytwhjtixdosusngyfk7vvafu:
     resolution: {integrity: sha512-xxjGLvlX2Ys4H0iHrI16t74rG9EBcpFvJ3Y3B7KMQTrnW34Kf7Da/UC8J67Gtx85mTHW020ml85SVPKORWNNKQ==}
     peerDependencies:
@@ -368,6 +386,16 @@ packages:
     dependencies:
       '@chakra-ui/shared-utils': 2.0.5
       '@chakra-ui/system': 2.6.2_2jbui5nro4tb6hwabdsx6ymml4
+      react: 18.2.0
+    dev: false
+
+  /@chakra-ui/icons/2.1.1_react@18.2.0:
+    resolution: {integrity: sha512-3p30hdo4LlRZTT5CwoAJq3G9fHI0wDc0pBaMHj4SUn0yomO+RcDRlzhdXqdr5cVnzax44sqXJVnf3oQG0eI+4g==}
+    peerDependencies:
+      '@chakra-ui/system': '>=2.0.0'
+      react: '>=18'
+    dependencies:
+      '@chakra-ui/icon': 3.2.0_react@18.2.0
       react: 18.2.0
     dev: false
 
@@ -1567,6 +1595,10 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@fontsource/raleway/5.0.16:
+    resolution: {integrity: sha512-+VNqahWDG31fL4TyeShCfCu5HWyid/Pm2wXH75rjFjJeqWergmkPUAqUzBXjaMIcYqWmFkI6KYzDKWpe2VZiaA==}
+    dev: false
+
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: false
@@ -1862,6 +1894,11 @@ packages:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: true
 
+  /@tanstack/history/1.15.13:
+    resolution: {integrity: sha512-ToaeMtK5S4YaxCywAlYexc7KPFN0esjyTZ4vXzJhXEWAkro9iHgh7m/4ozPJb7oTo65WkHWX0W9GjcZbInSD8w==}
+    engines: {node: '>=12'}
+    dev: false
+
   /@tanstack/query-core/5.18.1:
     resolution: {integrity: sha512-fYhrG7bHgSNbnkIJF2R4VUXb4lF7EBiQjKkDc5wOlB7usdQOIN4LxxHpDxyE3qjqIst1WBGvDtL48T0sHJGKCw==}
     dev: false
@@ -1873,6 +1910,52 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.18.1
       react: 18.2.0
+    dev: false
+
+  /@tanstack/react-router/1.15.23_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-C9d1Wj8n28z+qclMiiDFxR9Ydxu7/7Gv9hm9I0H1yiKyxXzoGTbcT2x8znsM8Fouqw2DtAW5NsFw9FVtvz9zfQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/history': 1.15.13
+      '@tanstack/react-store': 0.2.1_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tiny-invariant: 1.3.1
+      tiny-warning: 1.0.3
+    dev: false
+
+  /@tanstack/react-store/0.2.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-tEbMCQjbeVw9KOP/202LfqZMSNAVi6zYkkp1kBom8nFuMx/965Hzes3+6G6b/comCwVxoJU8Gg9IrcF8yRPthw==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/store': 0.1.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  /@tanstack/router-generator/1.15.22:
+    resolution: {integrity: sha512-E3yDWSTt2pH05rV4QZF3ghlzqWEPjo9iKWDxSfKEQUPripxYEduhguAaybzbbB+XKN0BdvQq+08yl/lQg7Tc3Q==}
+    engines: {node: '>=12'}
+    dependencies:
+      prettier: 3.2.4
+      zod: 3.22.4
+    dev: true
+
+  /@tanstack/router-vite-plugin/1.15.22:
+    resolution: {integrity: sha512-KUJIeWwj/cifazq3bau59yG2CgSeyDr4cStqA0N556pG2x0gD4UBc8t8bLDX1s8OpSBIVe9X18llwkRfp4x7BA==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@tanstack/router-generator': 1.15.22
+    dev: true
+
+  /@tanstack/store/0.1.3:
+    resolution: {integrity: sha512-GnolmC8Fr4mvsHE1fGQmR3Nm0eBO3KnZjDU0a+P3TeQNM/dDscFGxtA7p31NplQNW3KwBw4t1RVFmz0VeKLxcw==}
     dev: false
 
   /@tootallnate/once/1.1.2:
@@ -3983,6 +4066,10 @@ packages:
     resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
     dev: false
 
+  /tiny-warning/1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+    dev: false
+
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -4099,6 +4186,14 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /use-sync-external-store/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: false
@@ -4178,4 +4273,8 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /zod/3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: true

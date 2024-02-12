@@ -1,19 +1,10 @@
-import {
-  ComponentWithAs,
-  Input,
-  InputProps,
-  forwardRef,
-} from '@chakra-ui/react';
+import { Input, InputProps, forwardRef } from '@chakra-ui/react';
 
-interface FormInputProps extends ComponentWithAs<'input', InputProps> {}
-
-export const FormInput = forwardRef<InputProps, FormInputProps>(
-  (props, ref) => {
-    return (
-      <Input
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
+export const FormInput = forwardRef<InputProps, 'input'>((props, ref) => {
+  return (
+    <Input
+      ref={ref}
+      {...props}
+    />
+  );
+});

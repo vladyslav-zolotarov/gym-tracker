@@ -1,32 +1,36 @@
-import { Box, Button, Container, useColorMode } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { Box, Container } from '@chakra-ui/react';
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { UserProvider } from '@services/providers/UserProvider';
+import { useUserContext } from '@services/state/userContext';
+import { UserActionsTypes } from '@services/reducers/userReducer';
 
 function App() {
   // const [userState, dispatch] = useReducer(userReducer, undefined);
-  // const { colorMode, toggleColorMode } = useColorMode();
+
+  // const { dispatch } = useUserContext();
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('pocketbase_auth');
+  //   if (!token) {
+  //     return;
+  //   }
+
+  //   dispatch({
+  //     type: UserActionsTypes.SetUser,
+  //     payload: JSON.parse(token).model,
+  //   });
+  // }, []);
 
   return (
-    // <UserContext.Provider value={userState}>
     <UserProvider>
-      <Container
-        w='100%'
-        h='100%'
-        minHeight='100vh'>
-        <Box
-          maxW='1400px'
-          minHeight='100vh'
-          h='100%'>
-          <SignInPage />
-          {/* <Button
-          colorScheme='whatsapp'
-          onClick={toggleColorMode}>
-          Toggle to {colorMode === 'dark' ? 'light' : 'dark'} mode
-        </Button> */}
-        </Box>
-      </Container>
+      <Box
+        maxW='1400px'
+        // minHeight='100vh'
+        h='100%'>
+        {/* <SignInPage /> */}
+      </Box>
     </UserProvider>
-    // </UserContext.Provider>
   );
 }
 

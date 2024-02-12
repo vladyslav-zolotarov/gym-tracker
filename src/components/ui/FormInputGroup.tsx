@@ -1,5 +1,5 @@
-import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
+import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/react';
 
 type FormInputGroupProps = {
   label: string;

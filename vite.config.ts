@@ -1,11 +1,17 @@
 import * as path from 'path';
-import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
+import { defineConfig, loadEnv } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
+    server: {
+      watch: {
+        usePolling: true,
+      },
+    },
     define: {
       'process.env.PB_TYPEGEN_URL': JSON.stringify(env.PB_TYPEGEN_URL),
       'process.env.PB_TYPEGEN_EMAIL': JSON.stringify(env.PB_TYPEGEN_EMAIL),
@@ -13,7 +19,7 @@ export default defineConfig(({ mode }) => {
         env.PB_TYPEGEN_PASSWORD
       ),
     },
-    plugins: [react()],
+    plugins: [react(), TanStackRouterVite()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
