@@ -12,8 +12,8 @@ export const Route = createRootRoute({
       <header>
         <NavBar />
       </header>
-      <hr />
-      <Box marginTop='10px'>
+
+      <Box>
         <Outlet />
       </Box>
     </Container>

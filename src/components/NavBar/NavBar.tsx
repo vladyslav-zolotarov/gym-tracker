@@ -1,4 +1,5 @@
-import { useDisclosure } from '@chakra-ui/react';
+import { useRouterState } from '@tanstack/react-router';
+import { Box, Divider, useDisclosure } from '@chakra-ui/react';
 import {
   MenuLinks,
   MenuToggle,
@@ -7,19 +8,30 @@ import {
 } from '@components/NavBar';
 
 export const NavBar = () => {
+  const router = useRouterState();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  if (
+    router.location.pathname === '/signin' ||
+    router.location.pathname === '/signup'
+  ) {
+    return;
+  }
+
   return (
-    <NavBarContainer>
-      <Logo />
-      <MenuLinks
-        isOpen={isOpen}
-        onClose={onClose}
-      />
-      <MenuToggle
-        isOpen={isOpen}
-        onOpen={onOpen}
-      />
-    </NavBarContainer>
+    <Box marginBottom='20px'>
+      <NavBarContainer>
+        <Logo />
+        <MenuLinks
+          isOpen={isOpen}
+          onClose={onClose}
+        />
+        <MenuToggle
+          isOpen={isOpen}
+          onOpen={onOpen}
+        />
+      </NavBarContainer>
+      <Divider />
+    </Box>
   );
 };

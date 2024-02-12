@@ -16,6 +16,7 @@ import { emailRegister, passwordRegister } from '@helpers/formRedisters/index';
 import { useUserContext } from '@services/state/userContext';
 import { TFormInputs } from '@/types/form-types';
 import GoogleIcon from '@assets/icons/google.svg';
+import { Link } from '@tanstack/react-router';
 
 export const SignInPage = () => {
   const {
@@ -58,7 +59,7 @@ export const SignInPage = () => {
         variant='outline'
         direction='column'
         maxW='md'
-        width='md'
+        width={{ base: '100%', md: 'md' }}
         padding='20px'
         mb='30px'
         as='form'
@@ -122,9 +123,11 @@ export const SignInPage = () => {
         variant='outline'
         direction='column'
         maxW='md'
-        width='md'
+        width={{ base: '100%', md: 'md' }}
         padding='20px'>
-        <Text textAlign='center'>New to GT? Create an account</Text>
+        <Text textAlign='center'>
+          New to GT? <Link to='/signup'>Create an account</Link>
+        </Text>
       </Card>
     </Flex>
   );
