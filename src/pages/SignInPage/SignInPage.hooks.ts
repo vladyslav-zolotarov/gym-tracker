@@ -1,13 +1,14 @@
-import { pb } from '@/lib/pocketbase';
+import { pb } from '@lib/pocketbase';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import { useToast } from '@chakra-ui/react';
 import { TFormInputs } from '@/types/form-types';
 import { Collections, UsersResponse } from '@/types/pocketbase-types';
+import { useErrorToast, useSuccessToast } from '@hooks/index';
 
 export const useSignIn = () => {
   const navigate = useNavigate();
-  const toast = useToast();
+  const successToast = useSuccessToast();
+  const errorToast = useErrorToast();
 
   return useMutation({
     mutationFn: async ({ email, password }: TFormInputs) =>
@@ -16,22 +17,12 @@ export const useSignIn = () => {
         .authWithPassword<UsersResponse>(email, password),
     onSuccess: () => {
       navigate({ to: '/home' });
-      toast({
-        position: 'bottom-right',
-        description: 'Successible authentication',
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      });
+      successToast({ description: 'Successible authentication' });
     },
     onError: error => {
-      toast({
-        position: 'bottom-right',
+      errorToast({
         title: `${error?.message}`,
         description: `${error?.name}`,
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
       });
     },
   });
@@ -39,7 +30,8 @@ export const useSignIn = () => {
 
 export const useSignInGoogle = () => {
   const navigate = useNavigate();
-  const toast = useToast();
+  const successToast = useSuccessToast();
+  const errorToast = useErrorToast();
 
   return useMutation({
     mutationFn: async () =>
@@ -48,21 +40,12 @@ export const useSignInGoogle = () => {
         .authWithOAuth2<UsersResponse>({ provider: 'google' }),
     onSuccess: () => {
       navigate({ to: '/home' });
-      toast({
-        position: 'bottom-right',
-        description: 'Successible authentication',
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      });
+      successToast({ description: 'Successible authentication' });
     },
     onError: error => {
-      toast({
-        position: 'bottom-right',
-        description: `${error?.message}`,
-        status: 'error',
-        duration: 9000,
-        isClosable: true,
+      errorToast({
+        title: `${error?.message}`,
+        description: `${error?.name}`,
       });
     },
   });
