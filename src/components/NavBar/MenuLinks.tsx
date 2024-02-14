@@ -15,7 +15,7 @@ import {
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { MenuItem, ToggleTheme } from '@components/NavBar';
+import { MenuAdditional, MenuItem, ToggleTheme } from '@components/NavBar';
 
 type MenuLinksComponent = ChakraComponent<
   'div',
@@ -47,20 +47,7 @@ export const MenuLinks = ((props: MenuLinksProps) => {
             alignItems='center'
             gap='10px'>
             <ToggleTheme />
-            <MenuItem to='/signup'>
-              <Button
-                as='div'
-                variant='outline'>
-                Sign up
-              </Button>
-            </MenuItem>
-            <MenuItem to='/signin'>
-              <Button
-                as='div'
-                variant='ghost'>
-                Sign in
-              </Button>
-            </MenuItem>
+            <MenuAdditional />
           </Flex>
         </>
       ) : (

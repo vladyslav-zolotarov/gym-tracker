@@ -1,13 +1,12 @@
 import { pb } from '@/lib/pocketbase';
 import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from '@tanstack/react-router';
 import { useToast } from '@chakra-ui/react';
 import { TFormInputs } from '@/types/form-types';
 import { Collections, UsersResponse } from '@/types/pocketbase-types';
-import { useUserContext } from '@services/state/userContext';
-import { UserActionsTypes } from '@services/reducers/userReducer';
 
 export const useSignIn = () => {
-  const { dispatch } = useUserContext();
+  const navigate = useNavigate();
   const toast = useToast();
 
   return useMutation({
@@ -15,9 +14,8 @@ export const useSignIn = () => {
       await pb
         .collection(Collections.Users)
         .authWithPassword<UsersResponse>(email, password),
-    onSuccess: data => {
-      console.log('data', data);
-      dispatch({ type: UserActionsTypes.SetUser, payload: data });
+    onSuccess: () => {
+      navigate({ to: '/home' });
       toast({
         position: 'bottom-right',
         description: 'Successible authentication',
@@ -40,16 +38,16 @@ export const useSignIn = () => {
 };
 
 export const useSignInGoogle = () => {
+  const navigate = useNavigate();
   const toast = useToast();
-  const { dispatch } = useUserContext();
 
   return useMutation({
     mutationFn: async () =>
       await pb
         .collection(Collections.Users)
         .authWithOAuth2<UsersResponse>({ provider: 'google' }),
-    onSuccess: data => {
-      dispatch({ type: UserActionsTypes.SetUser, payload: data });
+    onSuccess: () => {
+      navigate({ to: '/home' });
       toast({
         position: 'bottom-right',
         description: 'Successible authentication',

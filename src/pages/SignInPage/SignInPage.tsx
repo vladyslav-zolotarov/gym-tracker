@@ -8,12 +8,10 @@ import {
   Spinner,
   Card,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
 import { FormInputGroup, FormInput } from '@components/ui/index';
 import { emailRegister, passwordRegister } from '@helpers/formRedisters/index';
-import { useUserContext } from '@services/state/userContext';
 import { TFormInputs } from '@/types/form-types';
 import GoogleIcon from '@assets/icons/google.svg';
 import { Link } from '@tanstack/react-router';
@@ -26,15 +24,10 @@ export const SignInPage = () => {
   } = useForm<TFormInputs>({ mode: 'onSubmit' });
   const { mutate: onSignInGoogle } = useSignInGoogle();
   const { mutate: onSignIn, isPending } = useSignIn();
-  const { state } = useUserContext();
 
   const onSubmit: SubmitHandler<TFormInputs> = async data => {
     onSignIn(data);
   };
-
-  useEffect(() => {
-    console.log('userContext', state);
-  }, [state]);
 
   return (
     <Flex

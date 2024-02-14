@@ -1,21 +1,40 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import {
+  createRootRoute,
+  createRootRouteWithContext,
+  Outlet,
+  redirect,
+} from '@tanstack/react-router';
 import { Box, Container } from '@chakra-ui/react';
 import { NavBar } from '@/components/NavBar/index';
+import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { QueryClient } from '@tanstack/react-query';
 
-export const Route = createRootRoute({
-  component: () => (
-    <Container
-      w='100%'
-      h='100%'
-      maxW='1400px'
-      minHeight='100vh'>
-      <header>
-        <NavBar />
-      </header>
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-      <Box>
-        <Outlet />
-      </Box>
-    </Container>
-  ),
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
+  component: RootComponent,
 });
+
+function RootComponent() {
+  return (
+    <>
+      <Container
+        w='100%'
+        h='100%'
+        maxW='1400px'
+        minHeight='100vh'>
+        <header>
+          <NavBar />
+        </header>
+
+        <Box>
+          <Outlet />
+        </Box>
+      </Container>
+
+      <ReactQueryDevtools />
+    </>
+  );
+}
