@@ -1,12 +1,6 @@
-import {
-  createRootRoute,
-  createRootRouteWithContext,
-  Outlet,
-  redirect,
-} from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { Box, Container } from '@chakra-ui/react';
-import { NavBar } from '@/components/NavBar/index';
-import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { NavBar } from '@components/NavBar/index';
 import { QueryClient } from '@tanstack/react-query';
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
