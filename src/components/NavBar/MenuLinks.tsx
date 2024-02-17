@@ -16,6 +16,7 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 import { MenuAdditional, MenuItem, ToggleTheme } from '@components/NavBar';
+import { LuHome, LuGrip, LuCalendarRange } from 'react-icons/lu';
 
 type MenuLinksComponent = ChakraComponent<
   'div',
@@ -31,16 +32,25 @@ export const MenuLinks = ((props: MenuLinksProps) => {
       {isLaptop ? (
         <>
           <Flex
-            gap='10px'
+            gap='50px'
             alignItems='center'
             as='nav'
             display={{
               base: `${!props.isOpen ? 'none' : 'flex'} `,
               md: 'flex',
             }}>
-            <MenuItem to='/home'>Home</MenuItem>
-            <MenuItem to='/calendar'>Calendar</MenuItem>
-            <MenuItem to='/categories'>Categories</MenuItem>
+            <MenuItem to='/home'>
+              <LuHome />
+              Home
+            </MenuItem>
+            <MenuItem to='/calendar'>
+              <LuCalendarRange />
+              Calendar
+            </MenuItem>
+            <MenuItem to='/categories'>
+              <LuGrip />
+              Categories
+            </MenuItem>
           </Flex>
 
           <Flex

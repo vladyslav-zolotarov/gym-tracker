@@ -1,5 +1,4 @@
 import { Button, ButtonProps, ChakraComponent } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
 
 type MenuToggleComponent = ChakraComponent<
   'button',
@@ -13,12 +12,12 @@ type MenuToggleProps = ButtonProps & {
 export const MenuToggle = ((props: MenuToggleProps) => {
   return (
     <Button
-      leftIcon={
-        <HamburgerIcon
-          w={6}
-          h={6}
-        />
-      }
+      // leftIcon={
+      //   <HamburgerIcon
+      //     w={6}
+      //     h={6}
+      //   />
+      // }
       iconSpacing='0'
       variant='solid'
       size='md'

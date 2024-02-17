@@ -16,8 +16,11 @@ export const MenuItem = ((props: LinkChakraProps) => {
   return (
     <LinkChakra
       as={ReactRouterLink}
-      fontSize='lg'
-      fontWeight='500'
+      gap='5px'
+      display='flex'
+      alignItems='center'
+      fontSize='xl'
+      fontWeight='700'
       {...props}>
       {children}
     </LinkChakra>

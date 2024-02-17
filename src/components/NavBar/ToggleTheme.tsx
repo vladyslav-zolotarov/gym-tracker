@@ -1,5 +1,5 @@
 import { Button, useColorMode } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { LuSun, LuMoon } from 'react-icons/lu';
 
 export const ToggleTheme = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -10,8 +10,7 @@ export const ToggleTheme = () => {
         w='40px'
         borderRadius='50%'
         iconSpacing='0'
-        leftIcon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
-        colorScheme='teal'
+        leftIcon={colorMode === 'dark' ? <LuSun /> : <LuMoon />}
         variant='ghost'
         onClick={toggleColorMode}></Button>
     </>

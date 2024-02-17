@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@chakra-ui/icons': ^2.1.1
   '@chakra-ui/react': ^2.8.2
   '@emotion/react': ^11.11.3
   '@emotion/styled': ^11.11.0
   '@fontsource/raleway': ^5.0.16
+  '@fontsource/ubuntu': ^5.0.8
   '@tanstack/react-query': ^5.18.1
   '@tanstack/react-query-devtools': ^5.20.2
   '@tanstack/react-router': ^1.15.23
@@ -26,15 +26,16 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hook-form: ^7.50.0
+  react-icons: ^5.0.1
   typescript: ^5.2.2
   vite: ^5.0.8
 
 dependencies:
-  '@chakra-ui/icons': 2.1.1_react@18.2.0
   '@chakra-ui/react': 2.8.2_2ivuigtzv43yvqnshyrl6k2apq
   '@emotion/react': 11.11.3_z4qn5m62jnw5xrigtnmlk62un4
   '@emotion/styled': 11.11.0_dja5vsqdtfrc7bjpqfim3wovpe
   '@fontsource/raleway': 5.0.16
+  '@fontsource/ubuntu': 5.0.8
   '@tanstack/react-query': 5.18.1_react@18.2.0
   '@tanstack/react-query-devtools': 5.20.2_gnw6r7fpazm4iacdqhrqq6s35q
   '@tanstack/react-router': 1.15.23_biqbaboplfbrettd7655fr4n2y
@@ -44,6 +45,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.50.0_react@18.2.0
+  react-icons: 5.0.1_react@18.2.0
 
 devDependencies:
   '@tanstack/router-vite-plugin': 1.15.22
@@ -370,16 +372,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@chakra-ui/icon/3.2.0_react@18.2.0:
-    resolution: {integrity: sha512-xxjGLvlX2Ys4H0iHrI16t74rG9EBcpFvJ3Y3B7KMQTrnW34Kf7Da/UC8J67Gtx85mTHW020ml85SVPKORWNNKQ==}
-    peerDependencies:
-      '@chakra-ui/system': '>=2.0.0'
-      react: '>=18'
-    dependencies:
-      '@chakra-ui/shared-utils': 2.0.5
-      react: 18.2.0
-    dev: false
-
   /@chakra-ui/icon/3.2.0_woytwhjtixdosusngyfk7vvafu:
     resolution: {integrity: sha512-xxjGLvlX2Ys4H0iHrI16t74rG9EBcpFvJ3Y3B7KMQTrnW34Kf7Da/UC8J67Gtx85mTHW020ml85SVPKORWNNKQ==}
     peerDependencies:
@@ -388,16 +380,6 @@ packages:
     dependencies:
       '@chakra-ui/shared-utils': 2.0.5
       '@chakra-ui/system': 2.6.2_2jbui5nro4tb6hwabdsx6ymml4
-      react: 18.2.0
-    dev: false
-
-  /@chakra-ui/icons/2.1.1_react@18.2.0:
-    resolution: {integrity: sha512-3p30hdo4LlRZTT5CwoAJq3G9fHI0wDc0pBaMHj4SUn0yomO+RcDRlzhdXqdr5cVnzax44sqXJVnf3oQG0eI+4g==}
-    peerDependencies:
-      '@chakra-ui/system': '>=2.0.0'
-      react: '>=18'
-    dependencies:
-      '@chakra-ui/icon': 3.2.0_react@18.2.0
       react: 18.2.0
     dev: false
 
@@ -1599,6 +1581,10 @@ packages:
 
   /@fontsource/raleway/5.0.16:
     resolution: {integrity: sha512-+VNqahWDG31fL4TyeShCfCu5HWyid/Pm2wXH75rjFjJeqWergmkPUAqUzBXjaMIcYqWmFkI6KYzDKWpe2VZiaA==}
+    dev: false
+
+  /@fontsource/ubuntu/5.0.8:
+    resolution: {integrity: sha512-lZY64hVXrnkt/+5jRfm0uMiRv+lmrIdnATAnDj1SPqebmI2UDf3KC9p4rOkIYsBOjOsD6seJ82GIQE067DSvWw==}
     dev: false
 
   /@gar/promisify/1.1.3:
@@ -3721,6 +3707,14 @@ packages:
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-icons/5.0.1_react@18.2.0:
+    resolution: {integrity: sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==}
+    peerDependencies:
+      react: '*'
     dependencies:
       react: 18.2.0
     dev: false

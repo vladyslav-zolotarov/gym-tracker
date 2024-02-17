@@ -17,7 +17,7 @@ export const Logo = () => {
         <Text
           as='b'
           fontSize='20px'>
-          GYM TRACKER
+          GyMtracker
         </Text>
       </MenuItem>
     </Flex>
