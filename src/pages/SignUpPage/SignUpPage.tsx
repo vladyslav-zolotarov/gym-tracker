@@ -1,37 +1,36 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from '@tanstack/react-router';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import {
-  Button,
   Flex,
   Heading,
-  Stack,
-  Text,
-  Spinner,
   Card,
-  Link as ChakraLink,
+  Stack,
+  Button,
+  Spinner,
+  Text,
 } from '@chakra-ui/react';
-import { useSignIn } from '@pages/SignInPage/SignInPage.hooks';
+import { FormInputGroup, FormInput } from '@/components/ui';
 import {
-  SignInFormSchema,
-  SignInFormType,
-} from '@pages/SignInPage/SignInPage.schema';
-import { FormInputGroup, FormInput } from '@components/ui/index';
-import { GoogleButton } from '@/components/GoogleButton/GoogleButton';
+  SignUpFormSchema,
+  SignUpFormType,
+} from '@pages/SignUpPage/SignUpPage.schema';
+import { useSignUp } from '@pages/SignUpPage/SignUpPage.hooks';
+import { GoogleButton } from '@components/GoogleButton/GoogleButton';
 
-export const SignInPage = () => {
+export const SignUpPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInFormType>({
+  } = useForm<SignUpFormType>({
     mode: 'onSubmit',
-    resolver: zodResolver(SignInFormSchema),
+    resolver: zodResolver(SignUpFormSchema),
   });
-  const { mutate: onSignIn, isPending } = useSignIn();
 
-  const onSubmit: SubmitHandler<SignInFormType> = async data => {
-    onSignIn(data);
+  const { mutate, isPending } = useSignUp();
+
+  const onSubmit: SubmitHandler<SignUpFormType> = async data => {
+    mutate(data);
   };
 
   return (
@@ -42,16 +41,10 @@ export const SignInPage = () => {
       minHeight='100vh'>
       <Heading
         size='lg'
-        textAlign='center'>
-        Sign In to GT
-      </Heading>
-
-      <Text
         textAlign='center'
-        fontSize='xl'
-        mb='20px'>
-        Hello, welcome back
-      </Text>
+        marginBottom='20px'>
+        Create account
+      </Heading>
 
       <Card
         variant='outline'
@@ -64,6 +57,15 @@ export const SignInPage = () => {
         noValidate
         onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing='4'>
+          <FormInputGroup
+            label='Name'
+            errors={errors.username?.message}>
+            <FormInput
+              placeholder='Name'
+              aria-describedby='helper-text-name'
+              {...register('username')}
+            />
+          </FormInputGroup>
           <FormInputGroup
             label='E-mail'
             errors={errors.email?.message}>
@@ -84,6 +86,17 @@ export const SignInPage = () => {
               {...register('password')}
             />
           </FormInputGroup>
+          <FormInputGroup
+            label='Confirm password'
+            errors={errors.passwordConfirm?.message}>
+            <FormInput
+              placeholder='Confirm password'
+              type='password'
+              aria-describedby='helper-text-password'
+              {...register('passwordConfirm')}
+            />
+          </FormInputGroup>
+
           <Button
             type='submit'
             isLoading={isPending}
@@ -94,8 +107,9 @@ export const SignInPage = () => {
                 size='xs'
               />
             }>
-            Signin
+            Create account
           </Button>
+
           <Flex
             alignItems='center'
             gap='2'
@@ -104,22 +118,6 @@ export const SignInPage = () => {
             <GoogleButton />
           </Flex>
         </Stack>
-      </Card>
-
-      <Card
-        variant='outline'
-        direction='column'
-        maxW='md'
-        width={{ base: '100%', md: 'md' }}
-        padding='20px'>
-        <Text textAlign='center'>
-          New to GT?{' '}
-          <ChakraLink
-            as={Link}
-            to='/signup'>
-            Create an account
-          </ChakraLink>
-        </Text>
       </Card>
     </Flex>
   );

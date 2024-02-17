@@ -1,20 +1,19 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { pb } from '@lib/pocketbase';
-import { SignInFormType } from '@pages/SignInPage/SignInPage.schema';
 import { Collections, UsersResponse } from '@/types/pocketbase-types';
 import { useErrorToast, useSuccessToast } from '@hooks/index';
 
-export const useSignIn = () => {
+export const useSignInGoogle = () => {
   const navigate = useNavigate();
   const successToast = useSuccessToast();
   const errorToast = useErrorToast();
 
   return useMutation({
-    mutationFn: async ({ email, password }: SignInFormType) =>
+    mutationFn: async () =>
       await pb
         .collection(Collections.Users)
-        .authWithPassword<UsersResponse>(email, password),
+        .authWithOAuth2<UsersResponse>({ provider: 'google' }),
     onSuccess: () => {
       navigate({ to: '/home' });
       successToast({ description: 'Successful authentication' });
