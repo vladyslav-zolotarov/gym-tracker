@@ -6,6 +6,7 @@ specifiers:
   '@emotion/styled': ^11.11.0
   '@fontsource/raleway': ^5.0.16
   '@fontsource/ubuntu': ^5.0.8
+  '@hookform/resolvers': ^3.3.4
   '@tanstack/react-query': ^5.18.1
   '@tanstack/react-query-devtools': ^5.20.2
   '@tanstack/react-router': ^1.15.23
@@ -29,6 +30,7 @@ specifiers:
   react-icons: ^5.0.1
   typescript: ^5.2.2
   vite: ^5.0.8
+  zod: ^3.22.4
 
 dependencies:
   '@chakra-ui/react': 2.8.2_2ivuigtzv43yvqnshyrl6k2apq
@@ -36,6 +38,7 @@ dependencies:
   '@emotion/styled': 11.11.0_dja5vsqdtfrc7bjpqfim3wovpe
   '@fontsource/raleway': 5.0.16
   '@fontsource/ubuntu': 5.0.8
+  '@hookform/resolvers': 3.3.4_react-hook-form@7.50.0
   '@tanstack/react-query': 5.18.1_react@18.2.0
   '@tanstack/react-query-devtools': 5.20.2_gnw6r7fpazm4iacdqhrqq6s35q
   '@tanstack/react-router': 1.15.23_biqbaboplfbrettd7655fr4n2y
@@ -46,6 +49,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.50.0_react@18.2.0
   react-icons: 5.0.1_react@18.2.0
+  zod: 3.22.4
 
 devDependencies:
   '@tanstack/router-vite-plugin': 1.15.22
@@ -1591,6 +1595,14 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: false
     optional: true
+
+  /@hookform/resolvers/3.3.4_react-hook-form@7.50.0:
+    resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.50.0_react@18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4288,4 +4300,3 @@ packages:
 
   /zod/3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: true

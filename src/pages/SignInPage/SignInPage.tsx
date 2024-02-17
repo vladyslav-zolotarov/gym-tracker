@@ -1,3 +1,6 @@
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from '@tanstack/react-router';
 import {
   Button,
   Flex,
@@ -8,24 +11,27 @@ import {
   Spinner,
   Card,
 } from '@chakra-ui/react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSignIn, useSignInGoogle } from '@pages/SignInPage/SignInPage.hooks';
+import {
+  SignInFormSchema,
+  SignInFormType,
+} from '@pages/SignInPage/SignInPage.schema';
 import { FormInputGroup, FormInput } from '@components/ui/index';
-import { emailRegister, passwordRegister } from '@helpers/formRedisters/index';
-import { TFormInputs } from '@/types/form-types';
 import GoogleIcon from '@assets/icons/google.svg';
-import { Link } from '@tanstack/react-router';
 
 export const SignInPage = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TFormInputs>({ mode: 'onSubmit' });
-  const { mutate: onSignInGoogle } = useSignInGoogle();
+  } = useForm<SignInFormType>({
+    mode: 'onSubmit',
+    resolver: zodResolver(SignInFormSchema),
+  });
   const { mutate: onSignIn, isPending } = useSignIn();
+  const { mutate: onSignInGoogle } = useSignInGoogle();
 
-  const onSubmit: SubmitHandler<TFormInputs> = async data => {
+  const onSubmit: SubmitHandler<SignInFormType> = async data => {
     onSignIn(data);
   };
 
@@ -66,7 +72,7 @@ export const SignInPage = () => {
               placeholder='E-mail'
               type='email'
               aria-describedby='helper-text-email'
-              {...emailRegister(register)}
+              {...register('email')}
             />
           </FormInputGroup>
           <FormInputGroup
@@ -76,7 +82,7 @@ export const SignInPage = () => {
               placeholder='Password'
               type='password'
               aria-describedby='helper-text-password'
-              {...passwordRegister(register)}
+              {...register('password')}
             />
           </FormInputGroup>
           <Button

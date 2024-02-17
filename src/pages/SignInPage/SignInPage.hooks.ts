@@ -1,7 +1,7 @@
-import { pb } from '@lib/pocketbase';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import { TFormInputs } from '@/types/form-types';
+import { pb } from '@lib/pocketbase';
+import { SignInFormType } from '@pages/SignInPage/SignInPage.schema';
 import { Collections, UsersResponse } from '@/types/pocketbase-types';
 import { useErrorToast, useSuccessToast } from '@hooks/index';
 
@@ -11,7 +11,7 @@ export const useSignIn = () => {
   const errorToast = useErrorToast();
 
   return useMutation({
-    mutationFn: async ({ email, password }: TFormInputs) =>
+    mutationFn: async ({ email, password }: SignInFormType) =>
       await pb
         .collection(Collections.Users)
         .authWithPassword<UsersResponse>(email, password),
