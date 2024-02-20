@@ -1,9 +1,9 @@
 import { Button } from '@chakra-ui/react';
-import { useCheckAuth, useLogOut } from '@hooks/index';
+import { useAuthCheck, useLogOut } from '@hooks/index';
 import { MenuItem } from '@components/NavBar';
 
 export const MenuAdditional = () => {
-  const auth = useCheckAuth();
+  const auth = useAuthCheck();
   const { mutate } = useLogOut();
 
   return (

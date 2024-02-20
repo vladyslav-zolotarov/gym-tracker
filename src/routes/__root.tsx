@@ -1,5 +1,5 @@
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, Divider, Text } from '@chakra-ui/react';
 import { NavBar } from '@components/NavBar/index';
 import { QueryClient } from '@tanstack/react-query';
 
@@ -15,6 +15,8 @@ function RootComponent() {
   return (
     <>
       <Container
+        display='flex'
+        flexDirection='column'
         w='100%'
         h='100%'
         maxW='1400px'
@@ -23,9 +25,19 @@ function RootComponent() {
           <NavBar />
         </header>
 
-        <Box>
+        <Box marginBottom='auto'>
           <Outlet />
         </Box>
+
+        <footer style={{ marginTop: '1rem' }}>
+          <Divider />
+          <Text
+            padding='1rem'
+            textAlign='center'
+            fontSize='.8rem'>
+            © 2024 GYMTRACKER, eLGR1M
+          </Text>
+        </footer>
       </Container>
 
       <ReactQueryDevtools />

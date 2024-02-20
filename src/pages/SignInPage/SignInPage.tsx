@@ -16,7 +16,7 @@ import {
   SignInFormSchema,
   SignInFormType,
 } from '@pages/SignInPage/SignInPage.schema';
-import { FormInputGroup, FormInput } from '@components/ui/index';
+import { FormInputControl, FormInput } from '@components/ui/index';
 import { GoogleButton } from '@/components/GoogleButton/GoogleButton';
 
 export const SignInPage = () => {
@@ -64,7 +64,7 @@ export const SignInPage = () => {
         noValidate
         onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing='4'>
-          <FormInputGroup
+          <FormInputControl
             label='E-mail'
             errors={errors.email?.message}>
             <FormInput
@@ -73,8 +73,8 @@ export const SignInPage = () => {
               aria-describedby='helper-text-email'
               {...register('email')}
             />
-          </FormInputGroup>
-          <FormInputGroup
+          </FormInputControl>
+          <FormInputControl
             label='Password'
             errors={errors.password?.message}>
             <FormInput
@@ -83,7 +83,7 @@ export const SignInPage = () => {
               aria-describedby='helper-text-password'
               {...register('password')}
             />
-          </FormInputGroup>
+          </FormInputControl>
           <Button
             type='submit'
             isLoading={isPending}

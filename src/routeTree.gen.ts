@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const UserLazyImport = createFileRoute('/user')()
 const SignupLazyImport = createFileRoute('/signup')()
 const SigninLazyImport = createFileRoute('/signin')()
 const HomeLazyImport = createFileRoute('/home')()
@@ -23,6 +24,11 @@ const CategoriesLazyImport = createFileRoute('/categories')()
 const CalendarLazyImport = createFileRoute('/calendar')()
 
 // Create/Update Routes
+
+const UserLazyRoute = UserLazyImport.update({
+  path: '/user',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/user.lazy').then((d) => d.Route))
 
 const SignupLazyRoute = SignupLazyImport.update({
   path: '/signup',
@@ -73,6 +79,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupLazyImport
       parentRoute: typeof rootRoute
     }
+    '/user': {
+      preLoaderRoute: typeof UserLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -84,6 +94,7 @@ export const routeTree = rootRoute.addChildren([
   HomeLazyRoute,
   SigninLazyRoute,
   SignupLazyRoute,
+  UserLazyRoute,
 ])
 
 /* prettier-ignore-end */

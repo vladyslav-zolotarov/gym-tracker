@@ -9,7 +9,7 @@ import {
   Spinner,
   Text,
 } from '@chakra-ui/react';
-import { FormInputGroup, FormInput } from '@/components/ui';
+import { FormInputControl, FormInput } from '@/components/ui';
 import {
   SignUpFormSchema,
   SignUpFormType,
@@ -57,7 +57,7 @@ export const SignUpPage = () => {
         noValidate
         onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing='4'>
-          <FormInputGroup
+          <FormInputControl
             label='Name'
             errors={errors.username?.message}>
             <FormInput
@@ -65,8 +65,8 @@ export const SignUpPage = () => {
               aria-describedby='helper-text-name'
               {...register('username')}
             />
-          </FormInputGroup>
-          <FormInputGroup
+          </FormInputControl>
+          <FormInputControl
             label='E-mail'
             errors={errors.email?.message}>
             <FormInput
@@ -75,8 +75,8 @@ export const SignUpPage = () => {
               aria-describedby='helper-text-email'
               {...register('email')}
             />
-          </FormInputGroup>
-          <FormInputGroup
+          </FormInputControl>
+          <FormInputControl
             label='Password'
             errors={errors.password?.message}>
             <FormInput
@@ -85,8 +85,8 @@ export const SignUpPage = () => {
               aria-describedby='helper-text-password'
               {...register('password')}
             />
-          </FormInputGroup>
-          <FormInputGroup
+          </FormInputControl>
+          <FormInputControl
             label='Confirm password'
             errors={errors.passwordConfirm?.message}>
             <FormInput
@@ -95,7 +95,7 @@ export const SignUpPage = () => {
               aria-describedby='helper-text-password'
               {...register('passwordConfirm')}
             />
-          </FormInputGroup>
+          </FormInputControl>
 
           <Button
             type='submit'

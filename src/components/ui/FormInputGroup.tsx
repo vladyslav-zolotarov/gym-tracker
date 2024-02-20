@@ -6,7 +6,7 @@ type FormInputGroupProps = {
   errors: string | undefined;
 };
 
-export const FormInputGroup = (
+export const FormInputControl = (
   props: PropsWithChildren<FormInputGroupProps>
 ) => {
   const { errors, label, children } = props;
