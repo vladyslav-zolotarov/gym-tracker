@@ -15,12 +15,11 @@ import {
 import { FormInputControl, FormInput, FormUploadInput } from '@components/ui';
 import { UserSchema, UserType } from '@pages/UserPage/UserPage.schema';
 import { useUserUpdate } from '@pages/UserPage/UserPage.hooks';
-import { PocketBaseAuth } from '@/hooks';
+import { PocketBaseAuth } from '@hooks/index';
 import { FiFile } from 'react-icons/fi';
 
 export const ChangeUserInformationForm = ({
   id,
-  verified,
   username,
   email,
 }: PocketBaseAuth) => {
@@ -52,9 +51,9 @@ export const ChangeUserInformationForm = ({
         as='form'
         noValidate
         onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={!!errors.avatar}>
-          <FormLabel>File input</FormLabel>
-
+        <FormInputControl
+          label='Your image'
+          errors={errors.avatar?.message}>
           <FormUploadInput
             accept={'image/*'}
             register={register('avatar', {
@@ -78,11 +77,7 @@ export const ChangeUserInformationForm = ({
               )}
             </Flex>
           </FormUploadInput>
-
-          <FormErrorMessage>
-            {errors.avatar && errors?.avatar.message}
-          </FormErrorMessage>
-        </FormControl>
+        </FormInputControl>
 
         <FormInputControl
           label='Your id'
