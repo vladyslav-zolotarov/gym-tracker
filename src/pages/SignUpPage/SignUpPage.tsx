@@ -39,12 +39,7 @@ export const SignUpPage = () => {
       justifyContent='center'
       direction='column'
       minHeight='100vh'>
-      <Heading
-        size='lg'
-        textAlign='center'
-        marginBottom='20px'>
-        Create account
-      </Heading>
+      <Heading marginBottom='0'>Create account</Heading>
 
       <Card
         variant='outline'

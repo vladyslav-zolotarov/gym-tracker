@@ -1,4 +1,4 @@
-import { extendTheme, StyleFunctionProps } from '@chakra-ui/react';
+import { extendTheme, StyleFunctionProps, Heading } from '@chakra-ui/react';
 import '@fontsource/ubuntu';
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu/500.css';
@@ -14,6 +14,17 @@ const theme = extendTheme({
     body: `'Ubuntu', sans-serif`,
   },
   components: {
+    Heading: {
+      baseStyle: {
+        padding: { base: '.5rem 0', md: '1rem 0' },
+        marginBottom: '1rem',
+        textAlign: 'center',
+      },
+      defaultProps: {
+        as: 'h2',
+        size: 'lg',
+      },
+    },
     Link: {
       baseStyle: (props: StyleFunctionProps) => ({
         color: props.colorMode === 'dark' ? 'whiteAlpha.900' : '#17242A',

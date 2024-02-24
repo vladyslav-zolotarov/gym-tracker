@@ -8,7 +8,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { PocketBaseAuth } from '@/hooks';
-import { formatDate } from '@helpers/formatDate';
+import { formatDate, getPbImgUrl } from '@helpers/index';
 
 export const UserInformation = ({
   id,
@@ -36,7 +36,7 @@ export const UserInformation = ({
               w='140px'
               size='xl'
               name={username}
-              src={`${process.env.PB_TYPEGEN_URL}/api/files/${collectionId}/${id}/${avatar}?thumb=140x140`}
+              src={getPbImgUrl({ id, collectionId, avatar, thumb: '140x140' })}
             />
             <Flex
               direction='column'

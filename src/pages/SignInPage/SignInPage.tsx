@@ -40,11 +40,7 @@ export const SignInPage = () => {
       justifyContent='center'
       direction='column'
       minHeight='100vh'>
-      <Heading
-        size='lg'
-        textAlign='center'>
-        Sign In to GT
-      </Heading>
+      <Heading marginBottom='0'>Sign In to GT</Heading>
 
       <Text
         textAlign='center'

@@ -9,7 +9,6 @@ export const useUserUpdate = () => {
 
   return useMutation({
     mutationFn: async (data: UserType) => {
-      console.log('useMutation', data);
       await pb.collection('users').update(data.id, data);
     },
     onSuccess: () => {

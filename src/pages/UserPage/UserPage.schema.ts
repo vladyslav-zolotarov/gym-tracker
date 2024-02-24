@@ -17,8 +17,6 @@ export const UserSchema = z.object({
   avatar: z.instanceof(File).optional(),
 });
 
-export type UserType = z.infer<typeof UserSchema>;
-
 export const ResetPasswordSchema = z
   .object({
     oldPassword: z.string().min(1, {
@@ -35,5 +33,7 @@ export const ResetPasswordSchema = z
     path: ['newPasswordConfirm'],
     message: "Password don't match",
   });
+
+export type UserType = z.infer<typeof UserSchema>;
 
 export type ResetPasswordType = z.infer<typeof ResetPasswordSchema>;

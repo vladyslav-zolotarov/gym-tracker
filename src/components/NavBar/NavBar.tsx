@@ -19,7 +19,7 @@ export const NavBar = () => {
   }
 
   return (
-    <Box marginBottom='20px'>
+    <Box marginBottom='1rem'>
       <NavBarContainer>
         <Logo />
         <MenuLinks
