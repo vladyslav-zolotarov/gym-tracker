@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react';
 import { useAuthCheck, useLogOut } from '@hooks/index';
-import { MenuItem } from '@components/NavBar';
+import { AsideMenuItem } from '@/components/AsideNavBar';
 
 export const MenuAdditional = () => {
   const auth = useAuthCheck();
@@ -10,20 +10,20 @@ export const MenuAdditional = () => {
     <>
       {!auth ? (
         <>
-          <MenuItem to='/signup'>
+          <AsideMenuItem to='/signup'>
             <Button
               as='div'
               variant='outline'>
               Sign up
             </Button>
-          </MenuItem>
-          <MenuItem to='/signin'>
+          </AsideMenuItem>
+          <AsideMenuItem to='/signin'>
             <Button
               as='div'
               variant='ghost'>
               Sign in
             </Button>
-          </MenuItem>{' '}
+          </AsideMenuItem>
         </>
       ) : (
         <Button

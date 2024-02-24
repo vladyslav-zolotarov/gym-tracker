@@ -15,7 +15,7 @@ import {
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { MenuAdditional, MenuItem, ToggleTheme } from '@components/NavBar';
+import { AsideMenuItem } from '@/components/AsideNavBar';
 import { LuHome, LuGrip, LuCalendarRange } from 'react-icons/lu';
 
 type MenuLinksComponent = ChakraComponent<
@@ -24,43 +24,36 @@ type MenuLinksComponent = ChakraComponent<
 >;
 type MenuLinksProps = FlexProps & { isOpen: boolean; onClose: () => void };
 
-export const MenuLinks = ((props: MenuLinksProps) => {
+export const AsideMenuLinks = ((props: MenuLinksProps) => {
   const [isLaptop] = useMediaQuery('(min-width: 48em)');
   const btnRef = useRef(null);
   return (
     <>
-      {isLaptop ? (
-        <>
-          <Flex
-            gap='50px'
-            alignItems='center'
-            as='nav'
-            display={{
-              base: `${!props.isOpen ? 'none' : 'flex'} `,
-              md: 'flex',
-            }}>
-            <MenuItem to='/home'>
-              <LuHome />
-              Home
-            </MenuItem>
-            <MenuItem to='/calendar'>
-              <LuCalendarRange />
-              Calendar
-            </MenuItem>
-            <MenuItem to='/categories'>
-              <LuGrip />
-              Categories
-            </MenuItem>
-          </Flex>
-
-          <Flex
-            alignItems='center'
-            gap='10px'>
-            <ToggleTheme />
-            <MenuAdditional />
-          </Flex>
-        </>
-      ) : (
+      {/* {isLaptop ? ( */}
+      <>
+        <Flex
+          gap='.2rem'
+          direction='column'
+          as='nav'
+          display={{
+            base: `${!props.isOpen ? 'none' : 'flex'} `,
+            md: 'flex',
+          }}>
+          <AsideMenuItem to='/home'>
+            <LuHome />
+            Home
+          </AsideMenuItem>
+          <AsideMenuItem to='/calendar'>
+            <LuCalendarRange />
+            Calendar
+          </AsideMenuItem>
+          <AsideMenuItem to='/categories'>
+            <LuGrip />
+            Categories
+          </AsideMenuItem>
+        </Flex>
+      </>
+      {/* ) : (
         <Drawer
           isOpen={props.isOpen}
           placement='right'
@@ -103,7 +96,7 @@ export const MenuLinks = ((props: MenuLinksProps) => {
             <DrawerFooter>footer</DrawerFooter>
           </DrawerContent>
         </Drawer>
-      )}
+      )} */}
     </>
   );
 }) as MenuLinksComponent;

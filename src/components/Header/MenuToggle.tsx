@@ -12,12 +12,6 @@ type MenuToggleProps = ButtonProps & {
 export const MenuToggle = ((props: MenuToggleProps) => {
   return (
     <Button
-      // leftIcon={
-      //   <HamburgerIcon
-      //     w={6}
-      //     h={6}
-      //   />
-      // }
       iconSpacing='0'
       variant='solid'
       size='md'
@@ -25,6 +19,7 @@ export const MenuToggle = ((props: MenuToggleProps) => {
       display={{ base: 'flex', md: 'none' }}
       onClick={props.onOpen}>
       {props.children}
+      Btn
     </Button>
   );
 }) as MenuToggleComponent;

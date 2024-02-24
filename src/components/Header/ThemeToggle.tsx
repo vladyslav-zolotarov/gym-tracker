@@ -1,7 +1,7 @@
 import { Button, useColorMode } from '@chakra-ui/react';
 import { LuSun, LuMoon } from 'react-icons/lu';
 
-export const ToggleTheme = () => {
+export const ThemeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (

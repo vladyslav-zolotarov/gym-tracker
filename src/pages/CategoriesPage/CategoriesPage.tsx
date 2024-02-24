@@ -1,15 +1,15 @@
+import { Box, Heading } from '@chakra-ui/react';
 import { CategoryList } from '@components/Categories/CategoryList';
-import { useGetCategories } from './CategoriesPage.hooks';
-import { Heading, Text } from '@chakra-ui/react';
+import { useGetCategories } from '@pages/CategoriesPage/CategoriesPage.hooks';
 
 export const CategoriesPage = () => {
   const { data } = useGetCategories();
 
   return (
-    <>
-      <Heading>Categories 💪</Heading>
+    <Box>
+      <Heading textAlign='start'>Categories 💪</Heading>
 
       <CategoryList categories={data} />
-    </>
+    </Box>
   );
 };

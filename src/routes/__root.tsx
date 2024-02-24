@@ -1,9 +1,9 @@
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
-import { Box, Container, Divider, Text } from '@chakra-ui/react';
-import { NavBar } from '@components/NavBar/index';
 import { QueryClient } from '@tanstack/react-query';
-
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
+import { Box, Divider, Grid, GridItem, Text } from '@chakra-ui/react';
+import { AsideNavBar } from '@components/AsideNavBar/index';
+import { Header } from '@components/Header';
+import { useIsAuthPageType } from '@hooks/index';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -12,21 +12,52 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
+  const { isAuthPageType } = useIsAuthPageType();
+
+  if (isAuthPageType || isAuthPageType === undefined) {
+    return (
+      <Box
+        padding='0 1rem'
+        minHeight='100vh'>
+        <Box marginBottom='auto'>
+          <Box
+            maxWidth='1400px'
+            width='100%'
+            margin='1rem auto 0'>
+            <Outlet />
+          </Box>
+        </Box>
+      </Box>
+    );
+  }
+
   return (
-    <>
-      <Container
+    <Grid
+      padding='0 1rem'
+      templateAreas={`'aside container'`}
+      gridTemplateColumns={'22rem 1fr'}
+      gap={'2rem'}
+      minHeight='100vh'>
+      <GridItem
+        area={'aside'}
+        display='flex'>
+        <AsideNavBar />
+      </GridItem>
+
+      <GridItem
         display='flex'
         flexDirection='column'
-        w='100%'
-        h='100%'
-        maxW='1400px'
-        minHeight='100vh'>
-        <header>
-          <NavBar />
-        </header>
-
+        area={'container'}>
         <Box marginBottom='auto'>
-          <Outlet />
+          <Header />
+          <Divider />
+
+          <Box
+            maxWidth='1400px'
+            width='100%'
+            margin='1rem auto 0'>
+            <Outlet />
+          </Box>
         </Box>
 
         <footer style={{ marginTop: '1rem' }}>
@@ -38,9 +69,7 @@ function RootComponent() {
             © 2024 GYMTRACKER, eLGR1M
           </Text>
         </footer>
-      </Container>
-
-      <ReactQueryDevtools />
-    </>
+      </GridItem>
+    </Grid>
   );
 }
