@@ -1,20 +1,20 @@
 import { Flex, useDisclosure } from '@chakra-ui/react';
-import { MenuAdditional, MenuToggle, ThemeToggle } from '@components/Header';
+import { MenuToggle, ThemeToggle } from '@components/Header';
 
 export const Header = () => {
   const { isOpen, onOpen } = useDisclosure();
 
   return (
-    <header style={{ height: '82px' }}>
+    <header style={{ width: '100%' }}>
       <Flex
         gap='1rem'
         height='100%'
-        alignItems='center'>
+        alignItems='center'
+        padding='.9rem'>
         <Flex
           width='100%'
           justifyContent='flex-end'>
           <ThemeToggle />
-          <MenuAdditional />
 
           <MenuToggle
             isOpen={isOpen}

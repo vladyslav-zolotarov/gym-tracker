@@ -7,11 +7,10 @@ export const ThemeToggle = () => {
   return (
     <>
       <Button
-        w='40px'
-        borderRadius='50%'
+        width='40px'
         iconSpacing='0'
         leftIcon={colorMode === 'dark' ? <LuSun /> : <LuMoon />}
-        variant='ghost'
+        variant='outline'
         onClick={toggleColorMode}></Button>
     </>
   );

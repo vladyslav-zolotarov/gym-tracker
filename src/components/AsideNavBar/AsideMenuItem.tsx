@@ -15,6 +15,7 @@ export const AsideMenuItem = ((props: ButtonProps) => {
       variant='ghost'
       gap='1rem'
       size='lg'
+      padding='0 1rem'
       justifyContent='flex-start'
       {...props}>
       {children}

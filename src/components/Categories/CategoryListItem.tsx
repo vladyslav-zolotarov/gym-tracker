@@ -1,8 +1,9 @@
-import { getPbImgUrl } from '@/helpers';
+import { Link } from '@tanstack/react-router';
+import { Image, Box, Flex, Text, useColorMode } from '@chakra-ui/react';
+import { getPbImgUrl } from '@helpers/index';
 import { GtCategoriesResponse } from '@/types/pocketbase-types';
 import { IoIosArrowForward } from 'react-icons/io';
-import { Avatar, Box, Flex, Text, useColorMode } from '@chakra-ui/react';
-import { Link } from '@tanstack/react-router';
+import defaultImg from '@assets/icons/defaultImg.webp';
 
 export const CategoryListItem = ({
   category,
@@ -31,8 +32,10 @@ export const CategoryListItem = ({
         minWidth='200px'
         gap='1rem'
         alignItems='center'>
-        <Avatar
-          src={igmSrc}
+        <Image
+          borderRadius='full'
+          src={igmSrc ? igmSrc : defaultImg}
+          alt={category.name}
           height='50px'
         />
         <Text

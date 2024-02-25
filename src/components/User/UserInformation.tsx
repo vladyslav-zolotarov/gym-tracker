@@ -22,11 +22,7 @@ export const UserInformation = ({
 }: PocketBaseAuth) => {
   return (
     <Flex direction='column'>
-      <Heading
-        size='md'
-        marginBottom='1rem'>
-        Personal information
-      </Heading>
+      <Heading textAlign='start'>Personal information</Heading>
 
       <Card>
         <Flex justifyContent='space-between'>

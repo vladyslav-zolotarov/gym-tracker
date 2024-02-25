@@ -1,27 +1,32 @@
-import { Box, Divider, Flex, useDisclosure } from '@chakra-ui/react';
-import { AsideMenuLinks, Logo } from '@/components/AsideNavBar';
+import { Flex, useDisclosure } from '@chakra-ui/react';
+import {
+  AsideMenuLinks,
+  Logo,
+  AsideUser,
+  AsideMenuAdditional,
+} from '@/components/AsideNavBar';
+import { useAuthCheck } from '@hooks/index';
 
 export const AsideNavBar = () => {
   const { isOpen, onClose } = useDisclosure();
+  const user = useAuthCheck();
 
   return (
-    <Flex>
-      <aside>
-        <Box paddingRight='1rem'>
-          <Logo
-            padding='1rem 1.5rem'
-            height='100%'
-            width='22rem'
-            marginBottom='2rem'
-          />
-          <AsideMenuLinks
-            isOpen={isOpen}
-            onClose={onClose}
-          />
-        </Box>
-      </aside>
+    <aside style={{ width: '100%' }}>
+      <Flex direction='column'>
+        <Logo
+          padding='1rem 1.5rem'
+          marginBottom='2rem'
+        />
+        <AsideMenuLinks
+          isOpen={isOpen}
+          onClose={onClose}
+        />
 
-      <Divider orientation='vertical' />
-    </Flex>
+        <AsideMenuAdditional user={user} />
+      </Flex>
+
+      <AsideUser user={user} />
+    </aside>
   );
 };
