@@ -25,8 +25,13 @@ export const UserInformation = ({
       <Heading textAlign='start'>Personal information</Heading>
 
       <Card>
-        <Flex justifyContent='space-between'>
-          <Flex gap='2rem'>
+        <Flex
+          flexDirection={{ base: 'column', md: 'row' }}
+          justifyContent='space-between'>
+          <Flex
+            flexDirection={{ base: 'column', md: 'row' }}
+            marginBottom={{ base: '1rem', md: '0' }}
+            gap='2rem'>
             <Avatar
               h='140px'
               w='140px'
@@ -55,7 +60,18 @@ export const UserInformation = ({
                 </Text>
               </Box>
               <Box>
-                <Text fontSize='md'>E-mail:</Text>
+                <Text
+                  fontSize='md'
+                  display='flex'
+                  alignItems='center'
+                  gap='.5rem'>
+                  E-mail:{' '}
+                  <Badge
+                    fontSize='sm'
+                    colorScheme={verified ? 'green' : 'default'}>
+                    {verified ? 'Verified' : 'Unverified'}
+                  </Badge>
+                </Text>
                 <Text
                   fontSize='md'
                   as='b'>
@@ -68,18 +84,7 @@ export const UserInformation = ({
           <Flex
             direction='column'
             gap='10px'>
-            <Flex
-              gap='5px'
-              justifyContent='flex-end'>
-              <Text fontSize='md'>E-mail:</Text>
-              <Badge
-                fontSize='md'
-                colorScheme={verified ? 'green' : 'default'}>
-                {verified ? 'Verified' : 'Unverified'}
-              </Badge>
-            </Flex>
-
-            <Box textAlign='end'>
+            <Box textAlign={{ base: 'start', md: 'end' }}>
               <Text fontSize='md'>Acount created:</Text>
               <Text
                 fontSize='md'
@@ -87,7 +92,7 @@ export const UserInformation = ({
                 {formatDate(created)}
               </Text>
             </Box>
-            <Box textAlign='end'>
+            <Box textAlign={{ base: 'start', md: 'end' }}>
               <Text fontSize='md'>Last update acount information:</Text>
               <Text
                 fontSize='md'

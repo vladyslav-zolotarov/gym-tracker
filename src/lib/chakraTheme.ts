@@ -1,10 +1,26 @@
-import { extendTheme, StyleFunctionProps, Heading } from '@chakra-ui/react';
+import { extendTheme, StyleFunctionProps } from '@chakra-ui/react';
 import '@fontsource/ubuntu';
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu/500.css';
 import '@fontsource/ubuntu/700.css';
 
 const theme = extendTheme({
+  styles: {
+    global: {
+      '::-webkit-scrollbar': {
+        width: '0.5rem',
+        bgColor: 'transparent',
+      },
+      '::-webkit-scrollbar-thumb': {
+        bgColor: 'rgba(183, 194, 218, 0.12)',
+      },
+      '*': {
+        scrollbarWidth: 'thin',
+        scrollbarColor: 'rgba(183, 194, 218, 0.12) transparent',
+        scrollbarGutter: 'stable',
+      },
+    },
+  },
   config: {
     initialColorMode: 'dark',
     useSystemColorMode: false,

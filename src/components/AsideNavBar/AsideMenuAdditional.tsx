@@ -11,9 +11,7 @@ export const AsideMenuAdditional = ({
   return (
     <Flex
       direction='column'
-      marginTop='auto'
-      gap='.2rem'
-      padding='1rem 0'>
+      gap='1rem'>
       {!user ? (
         <>
           <AsideMenuItem to='/signup'>Sign up</AsideMenuItem>

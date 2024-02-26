@@ -4,13 +4,12 @@ import LogoIcon from '@assets/icons/logo-1.webp';
 export const Logo = (props: FlexProps) => {
   return (
     <Flex
-      borderRadius='full'
       alignItems='center'
       gap='1rem'
       {...props}>
       <Image
-        height='50px'
-        width='50px'
+        height={{ base: '40px', md: '50px' }}
+        width={{ base: '40px', md: '50px' }}
         src={LogoIcon}
       />
       <Heading

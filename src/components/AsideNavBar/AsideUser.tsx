@@ -15,8 +15,6 @@ export const AsideUser = ({ user }: { user: PocketBaseAuth | undefined }) => {
     thumb: '50x50',
   });
 
-  console.log(user);
-
   return (
     <AsideMenuItem
       to='/user'

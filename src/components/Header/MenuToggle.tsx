@@ -1,4 +1,5 @@
 import { Button, ButtonProps, ChakraComponent } from '@chakra-ui/react';
+import { HiMenuAlt1 } from 'react-icons/hi';
 
 type MenuToggleComponent = ChakraComponent<
   'button',
@@ -12,14 +13,13 @@ type MenuToggleProps = ButtonProps & {
 export const MenuToggle = ((props: MenuToggleProps) => {
   return (
     <Button
+      width='40px'
+      height='40px'
       iconSpacing='0'
-      variant='solid'
-      size='md'
-      w='20px'
-      display={{ base: 'flex', md: 'none' }}
-      onClick={props.onOpen}>
-      {props.children}
-      Btn
-    </Button>
+      leftIcon={<HiMenuAlt1 />}
+      variant='outline'
+      onClick={props.onOpen}
+      {...props}
+    />
   );
 }) as MenuToggleComponent;
