@@ -37,7 +37,6 @@ export const Header = ({
           <MenuToggle
             display={{ base: 'flex', md: 'none' }}
             marginLeft='1rem'
-            isOpen={isOpen}
             onOpen={onOpen}
           />
         </Flex>

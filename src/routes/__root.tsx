@@ -51,10 +51,7 @@ function RootComponent() {
       <VStack
         padding='1rem'
         display={{ base: 'none', md: 'flex', xl: 'none' }}>
-        <MenuToggle
-          isOpen={isOpen}
-          onOpen={onOpen}
-        />
+        <MenuToggle onOpen={onOpen} />
       </VStack>
 
       <VStack

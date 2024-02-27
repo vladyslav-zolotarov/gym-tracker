@@ -17,7 +17,10 @@ export const AsideUser = ({ user }: { user: PocketBaseAuth | undefined }) => {
 
   return (
     <AsideMenuItem
-      to='/user'
+      to='/user/$id'
+      params={{
+        id: user.id,
+      }}
       width='100%'>
       <Avatar
         height='40px'

@@ -16,19 +16,14 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const UserLazyImport = createFileRoute('/user')()
 const SignupLazyImport = createFileRoute('/signup')()
 const SigninLazyImport = createFileRoute('/signin')()
 const HomeLazyImport = createFileRoute('/home')()
 const CategoriesLazyImport = createFileRoute('/categories')()
 const CalendarLazyImport = createFileRoute('/calendar')()
+const UserIdLazyImport = createFileRoute('/user/$id')()
 
 // Create/Update Routes
-
-const UserLazyRoute = UserLazyImport.update({
-  path: '/user',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/user.lazy').then((d) => d.Route))
 
 const SignupLazyRoute = SignupLazyImport.update({
   path: '/signup',
@@ -55,6 +50,11 @@ const CalendarLazyRoute = CalendarLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/calendar.lazy').then((d) => d.Route))
 
+const UserIdLazyRoute = UserIdLazyImport.update({
+  path: '/user/$id',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/user.$id.lazy').then((d) => d.Route))
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -79,8 +79,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupLazyImport
       parentRoute: typeof rootRoute
     }
-    '/user': {
-      preLoaderRoute: typeof UserLazyImport
+    '/user/$id': {
+      preLoaderRoute: typeof UserIdLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -94,7 +94,7 @@ export const routeTree = rootRoute.addChildren([
   HomeLazyRoute,
   SigninLazyRoute,
   SignupLazyRoute,
-  UserLazyRoute,
+  UserIdLazyRoute,
 ])
 
 /* prettier-ignore-end */
