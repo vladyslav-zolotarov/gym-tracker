@@ -18,6 +18,7 @@ import { Route as rootRoute } from './routes/__root'
 
 const SignupLazyImport = createFileRoute('/signup')()
 const SigninLazyImport = createFileRoute('/signin')()
+const MyCategoriesLazyImport = createFileRoute('/my-categories')()
 const HomeLazyImport = createFileRoute('/home')()
 const CategoriesLazyImport = createFileRoute('/categories')()
 const CalendarLazyImport = createFileRoute('/calendar')()
@@ -34,6 +35,11 @@ const SigninLazyRoute = SigninLazyImport.update({
   path: '/signin',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/signin.lazy').then((d) => d.Route))
+
+const MyCategoriesLazyRoute = MyCategoriesLazyImport.update({
+  path: '/my-categories',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/my-categories.lazy').then((d) => d.Route))
 
 const HomeLazyRoute = HomeLazyImport.update({
   path: '/home',
@@ -71,6 +77,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLazyImport
       parentRoute: typeof rootRoute
     }
+    '/my-categories': {
+      preLoaderRoute: typeof MyCategoriesLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/signin': {
       preLoaderRoute: typeof SigninLazyImport
       parentRoute: typeof rootRoute
@@ -92,6 +102,7 @@ export const routeTree = rootRoute.addChildren([
   CalendarLazyRoute,
   CategoriesLazyRoute,
   HomeLazyRoute,
+  MyCategoriesLazyRoute,
   SigninLazyRoute,
   SignupLazyRoute,
   UserIdLazyRoute,
