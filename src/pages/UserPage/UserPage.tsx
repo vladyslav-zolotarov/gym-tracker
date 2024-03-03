@@ -1,8 +1,10 @@
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react';
-import { ResetPasswordForm } from '@components/User/ResetPasswordForm';
-import { ChangeUserInformationForm } from '@/components/User/ChangeUserInformationForm';
+import {
+  ChangeUserInformationForm,
+  UserInformation,
+  ResetPasswordForm,
+} from '@components/User/index';
 import { useAuthCheck } from '@hooks/index';
-import { UserInformation } from '@/components/User/UserInformation';
 
 export const UserPage = () => {
   const auth = useAuthCheck();
