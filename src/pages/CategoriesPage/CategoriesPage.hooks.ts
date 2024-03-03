@@ -16,10 +16,9 @@ export const useGetCategories = (
 ) => {
   return useQuery({
     queryKey: [categoryCollections],
-    queryFn: async () => {
-      return await pb
+    queryFn: async () =>
+      await pb
         .collection(categoryCollections)
-        .getFullList<GtCategoriesResponse>();
-    },
+        .getFullList<GtCategoriesResponse>(),
   });
 };

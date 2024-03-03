@@ -7,7 +7,7 @@ import {
 type MenuItemProps = ChakraComponent<'button', ReactRouterLinkProps>;
 
 export const AsideMenuItem = ((props: ButtonProps) => {
-  const { children } = props;
+  const { children, ...rest } = props;
 
   return (
     <Button
@@ -17,7 +17,7 @@ export const AsideMenuItem = ((props: ButtonProps) => {
       size='lg'
       padding='0 1rem'
       justifyContent='flex-start'
-      {...props}>
+      {...rest}>
       {children}
     </Button>
   );

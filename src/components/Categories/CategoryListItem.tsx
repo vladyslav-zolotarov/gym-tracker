@@ -1,5 +1,12 @@
 import { Link } from '@tanstack/react-router';
-import { Image, Box, Flex, Text, useColorMode } from '@chakra-ui/react';
+import {
+  Image,
+  Box,
+  Flex,
+  Text,
+  useColorMode,
+  Divider,
+} from '@chakra-ui/react';
 import { getPbImgUrl } from '@helpers/index';
 import { GtCategoriesResponse } from '@/types/pocketbase-types';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -20,48 +27,38 @@ export const CategoryListItem = ({
   });
 
   return (
-    <Flex
-      as={Link}
-      padding='.5rem'
-      gap='1rem'
-      alignItems='center'
-      _hover={{
-        backgroundColor: colorMode == 'light' ? 'gray.100' : 'gray.700',
-      }}>
+    <>
+      <Divider />
       <Flex
-        minWidth='200px'
+        as={Link}
+        padding='.5rem'
         gap='1rem'
-        alignItems='center'>
-        <Image
-          borderRadius='full'
-          src={igmSrc ? igmSrc : defaultImg}
-          alt={category.name}
-          height='50px'
-        />
-        <Text
-          size='lg'
-          fontWeight='500'>
-          {category.name}
-        </Text>
-      </Flex>
-      <Box
-        marginLeft='auto'
-        width='20px'>
-        <IoIosArrowForward />
-      </Box>
-      {/* <Flex
         alignItems='center'
-        justifyContent='flex-end'
-        width='100%'
-        gap='1rem'>
-        <Box>
+        _hover={{
+          backgroundColor: colorMode == 'light' ? 'gray.100' : 'gray.700',
+        }}>
+        <Flex
+          minWidth='200px'
+          gap='1rem'
+          alignItems='center'>
+          <Image
+            borderRadius='full'
+            src={igmSrc ? igmSrc : defaultImg}
+            alt={category.name}
+            height='50px'
+          />
           <Text
-            textAlign='end'
-            fontSize='sm'>
-            {category.description}
+            size='lg'
+            fontWeight='500'>
+            {category.name}
           </Text>
+        </Flex>
+        <Box
+          marginLeft='auto'
+          width='20px'>
+          <IoIosArrowForward />
         </Box>
-      </Flex> */}
-    </Flex>
+      </Flex>
+    </>
   );
 };

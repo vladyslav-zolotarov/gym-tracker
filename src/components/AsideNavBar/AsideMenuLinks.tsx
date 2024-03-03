@@ -25,10 +25,6 @@ export const AsideMenuLinks = ((props: MenuLinksProps) => {
         <LuGrip />
         Categories
       </AsideMenuItem>
-      <AsideMenuItem to='/my-categories'>
-        <LuGrip />
-        My Categories
-      </AsideMenuItem>
     </Flex>
   );
 }) as MenuLinksComponent;

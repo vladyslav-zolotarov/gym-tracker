@@ -1,23 +1,31 @@
-import { Box, Divider, Flex, Text } from '@chakra-ui/react';
-import { GtCategoriesResponse } from '@/types/pocketbase-types';
-import { CategoryListItem } from '@/components/Categories';
+import { Flex } from '@chakra-ui/react';
+import {
+  CategoryListItem,
+  CategoryListItemSkeleton,
+} from '@components/Categories/index';
+import {
+  useGetCategories,
+  PbCategoryCollectionsType,
+} from '@pages/CategoriesPage/CategoriesPage.hooks';
 
 export const CategoryList = ({
-  categories,
+  categoryCollections,
 }: {
-  categories: GtCategoriesResponse[] | undefined;
+  categoryCollections: PbCategoryCollectionsType;
 }) => {
-  if (!categories || !categories.length) {
-    return <Text>Category list is empty!</Text>;
+  const { data: categories, isLoading } = useGetCategories(categoryCollections);
+
+  if (!categories || isLoading) {
+    return [...Array(6)].map((_, id) => <CategoryListItemSkeleton key={id} />);
   }
 
   return (
     <Flex flexDirection='column'>
       {categories.map(category => (
-        <Box key={category.id}>
-          <Divider />
-          <CategoryListItem category={category} />
-        </Box>
+        <CategoryListItem
+          key={category.id}
+          category={category}
+        />
       ))}
     </Flex>
   );
