@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { AsideNavBar } from '@components/AsideNavBar/index';
 import { Header, MenuToggle } from '@components/Header';
-import { useIsAuthPageType } from '@hooks/index';
+import { useAuthCheck } from '@hooks/index';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -20,16 +21,15 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
-  const { isAuthPageType } = useIsAuthPageType();
+  const auth = useAuthCheck();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
-
   // base: "0em", // 0px
   // md: "48em", // ~768px
   // lg: "62em", // ~992px
   // xl: "80em",
 
-  if (isAuthPageType || isAuthPageType === undefined) {
+  if (!auth) {
     return (
       <Box
         padding='0 1rem'
@@ -83,7 +83,7 @@ function RootComponent() {
           marginBottom='auto'>
           <Outlet />
         </Container>
-
+        <ReactQueryDevtools />
         <footer style={{ marginTop: '1rem', width: '100%' }}>
           <Text
             padding='1rem'

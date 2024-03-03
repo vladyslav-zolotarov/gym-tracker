@@ -20,6 +20,5 @@ export const useAuthCheck = (): PocketBaseAuth | undefined => {
     return;
   }
 
-  const auth = authString as PocketBaseAuth;
-  return auth;
+  return authString as PocketBaseAuth;
 };
