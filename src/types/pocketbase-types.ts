@@ -7,6 +7,8 @@ import type { RecordService } from 'pocketbase';
 
 export enum Collections {
   GtCategories = 'gt_categories',
+  GtCategoryExercises = 'gt_category_exercises',
+  GtOwnUserCategories = 'gt_own_user_categories',
   Users = 'users',
 }
 
@@ -40,6 +42,18 @@ export type GtCategoriesRecord = {
   name?: string;
 };
 
+export type GtCategoryExercisesRecord = {
+  category_id?: RecordIdString;
+  name?: string;
+};
+
+export type GtOwnUserCategoriesRecord = {
+  description?: string;
+  icon?: string;
+  name?: string;
+  user_id?: RecordIdString;
+};
+
 export type UsersRecord = {
   avatar?: string;
 };
@@ -47,6 +61,10 @@ export type UsersRecord = {
 // Response types include system fields and match responses from the PocketBase API
 export type GtCategoriesResponse<Texpand = unknown> =
   Required<GtCategoriesRecord> & BaseSystemFields<Texpand>;
+export type GtCategoryExercisesResponse<Texpand = unknown> =
+  Required<GtCategoryExercisesRecord> & BaseSystemFields<Texpand>;
+export type GtOwnUserCategoriesResponse<Texpand = unknown> =
+  Required<GtOwnUserCategoriesRecord> & BaseSystemFields<Texpand>;
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> &
   AuthSystemFields<Texpand>;
 
@@ -54,11 +72,15 @@ export type UsersResponse<Texpand = unknown> = Required<UsersRecord> &
 
 export type CollectionRecords = {
   gt_categories: GtCategoriesRecord;
+  gt_category_exercises: GtCategoryExercisesRecord;
+  gt_own_user_categories: GtOwnUserCategoriesRecord;
   users: UsersRecord;
 };
 
 export type CollectionResponses = {
   gt_categories: GtCategoriesResponse;
+  gt_category_exercises: GtCategoryExercisesResponse;
+  gt_own_user_categories: GtOwnUserCategoriesResponse;
   users: UsersResponse;
 };
 
@@ -67,5 +89,11 @@ export type CollectionResponses = {
 
 export type TypedPocketBase = PocketBase & {
   collection(idOrName: 'gt_categories'): RecordService<GtCategoriesResponse>;
+  collection(
+    idOrName: 'gt_category_exercises'
+  ): RecordService<GtCategoryExercisesResponse>;
+  collection(
+    idOrName: 'gt_own_user_categories'
+  ): RecordService<GtOwnUserCategoriesResponse>;
   collection(idOrName: 'users'): RecordService<UsersResponse>;
 };

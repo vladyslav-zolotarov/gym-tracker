@@ -14,7 +14,7 @@ export const UserSchema = z.object({
     .min(1, { message: 'This field is required. Please enter your email!' })
     .email({ message: 'Invalid email' })
     .optional(),
-  avatar: z.instanceof(File).optional(),
+  avatar: z.any(z.instanceof(File)).optional(),
 });
 
 export const ResetPasswordSchema = z
@@ -34,6 +34,8 @@ export const ResetPasswordSchema = z
     message: "Password don't match",
   });
 
-export type UserType = z.infer<typeof UserSchema>;
+export type UserType = Omit<z.infer<typeof UserSchema>, 'avatar'> & {
+  avatar?: File | undefined;
+};
 
 export type ResetPasswordType = z.infer<typeof ResetPasswordSchema>;

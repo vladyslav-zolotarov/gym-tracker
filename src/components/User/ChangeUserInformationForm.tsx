@@ -17,13 +17,10 @@ import { UserSchema, UserType } from '@pages/UserPage/UserPage.schema';
 import { useUserUpdate } from '@pages/UserPage/UserPage.hooks';
 import { PocketBaseAuth } from '@hooks/index';
 import { FiFile } from 'react-icons/fi';
-import { getPbImgUrl } from '@helpers/index';
 
 export const ChangeUserInformationForm = ({
   id,
   username,
-  collectionId,
-  avatar,
   email,
 }: PocketBaseAuth) => {
   const { mutate, isPending } = useUserUpdate();
@@ -42,13 +39,6 @@ export const ChangeUserInformationForm = ({
   const onSubmit: SubmitHandler<UserType> = async data => {
     mutate(data);
   };
-
-  const avatarSrc = getPbImgUrl({
-    id: id,
-    collectionId: collectionId,
-    avatar: avatar,
-    thumb: '140x140',
-  });
 
   return (
     <Flex direction='column'>

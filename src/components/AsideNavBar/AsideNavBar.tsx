@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import {
+  Divider,
   Drawer,
   DrawerBody,
   DrawerContent,
@@ -35,7 +36,7 @@ export const AsideNavBar = ({
         <Flex
           padding='0 1rem'
           direction='column'
-          height='calc(100% - 136px)'
+          height='calc(100% - 153px)'
           overflow={{ base: 'auto', xl: 'hidden' }}
           _hover={{
             xl: { overflow: 'auto' },
@@ -54,6 +55,7 @@ export const AsideNavBar = ({
           padding='1rem'
           direction='column'
           gap='1rem'>
+          <Divider />
           <AsideUser user={user} />
           <AsideMenuAdditional user={user} />
         </Flex>

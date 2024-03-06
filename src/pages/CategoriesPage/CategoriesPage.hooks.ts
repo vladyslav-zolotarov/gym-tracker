@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { pb } from '@lib/pocketbase';
-import { GtCategoriesResponse } from '@/types/pocketbase-types';
+import { Collections, GtCategoriesResponse } from '@/types/pocketbase-types';
 
 export enum PbCategoryCollections {
   CATEGORIES = 'gt_categories',
@@ -20,5 +20,14 @@ export const useGetCategories = (
       await pb
         .collection(categoryCollections)
         .getFullList<GtCategoriesResponse>(),
+  });
+};
+
+export const useCreateCategory = () => {
+  return useMutation({
+    mutationKey: ['createCategory'],
+    mutationFn: async (data: any) => {
+      await pb.collection(Collections.GtOwnUserCategories).create(data);
+    },
   });
 };

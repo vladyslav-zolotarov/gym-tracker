@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { pb } from '@lib/pocketbase';
 import { UserType } from '@pages/UserPage/UserPage.schema';
 import { useErrorToast, useSuccessToast } from '@hooks/index';
+import { Collections } from '@/types/pocketbase-types';
 
 export const useUserUpdate = () => {
   const successToast = useSuccessToast();
@@ -9,7 +10,7 @@ export const useUserUpdate = () => {
 
   return useMutation({
     mutationFn: async (data: UserType) => {
-      await pb.collection('users').update(data.id, data);
+      await pb.collection(Collections.Users).update(data.id, data);
     },
     onSuccess: () => {
       successToast({

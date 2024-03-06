@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { SignUpFormType } from '@pages/SignUpPage/SignUpPage.schema';
 import { useErrorToast, useSuccessToast } from '@hooks/index';
+import { Collections } from '@/types/pocketbase-types';
 
 export const useSignUp = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export const useSignUp = () => {
   return useMutation({
     mutationFn: async (data: SignUpFormType) => {
       console.log('data', data);
-      await pb.collection('users').create(data);
+      await pb.collection(Collections.Users).create(data);
     },
     onSuccess: () => {
       navigate({ to: '/home' });

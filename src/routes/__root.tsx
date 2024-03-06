@@ -12,7 +12,6 @@ import {
 import { AsideNavBar } from '@components/AsideNavBar/index';
 import { Header, MenuToggle } from '@components/Header';
 import { useAuthCheck } from '@hooks/index';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -83,7 +82,6 @@ function RootComponent() {
           marginBottom='auto'>
           <Outlet />
         </Container>
-        <ReactQueryDevtools />
         <footer style={{ marginTop: '1rem', width: '100%' }}>
           <Text
             padding='1rem'
