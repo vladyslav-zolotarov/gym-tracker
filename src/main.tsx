@@ -5,6 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@lib/chakraTheme';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient();
 
@@ -22,13 +23,13 @@ declare module '@tanstack/react-router' {
     router: typeof router;
   }
 }
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
         <RouterProvider router={router} />
-      </QueryClientProvider>
-    </ChakraProvider>
+        <ReactQueryDevtools />
+      </ChakraProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

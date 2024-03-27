@@ -11,10 +11,21 @@ export const useSignIn = () => {
   const errorToast = useErrorToast();
 
   return useMutation({
-    mutationFn: async ({ email, password }: SignInFormType) =>
+    mutationFn: async ({ email, password }: SignInFormType) => {
       await pb
         .collection(Collections.Users)
         .authWithPassword<UsersResponse>(email, password),
+        pb.collection(Collections.Users).subscribe(
+          '*',
+          function (e) {
+            console.log(e.action);
+            console.log(e.record);
+          },
+          {
+            /* other options like expand, custom headers, etc. */
+          }
+        );
+    },
     onSuccess: () => {
       navigate({ to: '/home' });
       successToast({ description: 'Successful authentication' });

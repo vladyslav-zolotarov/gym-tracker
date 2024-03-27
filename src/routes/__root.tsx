@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { AsideNavBar } from '@components/AsideNavBar/index';
 import { Header, MenuToggle } from '@components/Header';
-import { useAuthCheck } from '@hooks/index';
+import { pb } from '@/lib/pocketbase';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -20,7 +20,7 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
-  const auth = useAuthCheck();
+  const isAuth = pb.authStore.model;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
   // base: "0em", // 0px
@@ -28,7 +28,7 @@ function RootComponent() {
   // lg: "62em", // ~992px
   // xl: "80em",
 
-  if (!auth) {
+  if (!isAuth) {
     return (
       <Box
         padding='0 1rem'

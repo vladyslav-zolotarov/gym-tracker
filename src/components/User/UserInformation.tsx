@@ -10,16 +10,18 @@ import {
 import { PocketBaseAuth } from '@/hooks';
 import { formatDate, getPbImgUrl } from '@helpers/index';
 
-export const UserInformation = ({
-  id,
-  email,
-  created,
-  updated,
-  verified,
-  username,
-  avatar,
-  collectionId,
-}: PocketBaseAuth) => {
+export const UserInformation = ({ user }: { user: PocketBaseAuth }) => {
+  const {
+    id,
+    email,
+    created,
+    updated,
+    verified,
+    username,
+    avatar,
+    collectionId,
+  } = user;
+
   return (
     <Flex direction='column'>
       <Heading textAlign='start'>Personal information</Heading>

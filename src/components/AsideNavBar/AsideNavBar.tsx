@@ -25,7 +25,7 @@ export const AsideNavBar = ({
   onClose: () => void;
 }) => {
   const { colorMode } = useColorMode();
-  const user = useAuthCheck();
+  const { user } = useAuthCheck();
   const btnRef = useRef(null);
 
   const [isDesktop] = useMediaQuery('(min-width: 80em)');

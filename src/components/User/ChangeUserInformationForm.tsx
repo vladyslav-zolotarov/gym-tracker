@@ -19,11 +19,12 @@ import { PocketBaseAuth } from '@hooks/index';
 import { FiFile } from 'react-icons/fi';
 
 export const ChangeUserInformationForm = ({
-  id,
-  username,
-  email,
-}: PocketBaseAuth) => {
+  user,
+}: {
+  user: PocketBaseAuth;
+}) => {
   const { mutate, isPending } = useUserUpdate();
+  const { id, username, email } = user;
 
   const {
     register,

@@ -1,11 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { authRedirect } from '@helpers/index';
+import { redirectTo } from '@helpers/index';
+import { useAuthCheck } from '@/hooks';
 
-export const Route = createFileRoute('/home')({
+export const Route = createFileRoute('/_authenticated/home')({
   component: Index,
-  beforeLoad: () => {
-    authRedirect();
-  },
 });
 
 function Index() {

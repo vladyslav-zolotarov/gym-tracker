@@ -13,10 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignupImport } from './routes/signup'
 import { Route as SigninImport } from './routes/signin'
-import { Route as HomeImport } from './routes/home'
-import { Route as CategoriesImport } from './routes/categories'
-import { Route as CalendarImport } from './routes/calendar'
-import { Route as UserIdImport } from './routes/user.$id'
+import { Route as AuthenticatedImport } from './routes/_authenticated'
+import { Route as AuthenticatedHomeImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedCategoriesImport } from './routes/_authenticated/categories'
+import { Route as AuthenticatedCalendarImport } from './routes/_authenticated/calendar'
+import { Route as AuthenticatedUserIdImport } from './routes/_authenticated/user.$id'
 
 // Create/Update Routes
 
@@ -30,40 +31,37 @@ const SigninRoute = SigninImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const HomeRoute = HomeImport.update({
+const AuthenticatedRoute = AuthenticatedImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthenticatedHomeRoute = AuthenticatedHomeImport.update({
   path: '/home',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const CategoriesRoute = CategoriesImport.update({
+const AuthenticatedCategoriesRoute = AuthenticatedCategoriesImport.update({
   path: '/categories',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const CalendarRoute = CalendarImport.update({
+const AuthenticatedCalendarRoute = AuthenticatedCalendarImport.update({
   path: '/calendar',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
-const UserIdRoute = UserIdImport.update({
+const AuthenticatedUserIdRoute = AuthenticatedUserIdImport.update({
   path: '/user/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/calendar': {
-      preLoaderRoute: typeof CalendarImport
-      parentRoute: typeof rootRoute
-    }
-    '/categories': {
-      preLoaderRoute: typeof CategoriesImport
-      parentRoute: typeof rootRoute
-    }
-    '/home': {
-      preLoaderRoute: typeof HomeImport
+    '/_authenticated': {
+      preLoaderRoute: typeof AuthenticatedImport
       parentRoute: typeof rootRoute
     }
     '/signin': {
@@ -74,9 +72,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupImport
       parentRoute: typeof rootRoute
     }
-    '/user/$id': {
-      preLoaderRoute: typeof UserIdImport
-      parentRoute: typeof rootRoute
+    '/_authenticated/calendar': {
+      preLoaderRoute: typeof AuthenticatedCalendarImport
+      parentRoute: typeof AuthenticatedImport
+    }
+    '/_authenticated/categories': {
+      preLoaderRoute: typeof AuthenticatedCategoriesImport
+      parentRoute: typeof AuthenticatedImport
+    }
+    '/_authenticated/home': {
+      preLoaderRoute: typeof AuthenticatedHomeImport
+      parentRoute: typeof AuthenticatedImport
+    }
+    '/_authenticated/user/$id': {
+      preLoaderRoute: typeof AuthenticatedUserIdImport
+      parentRoute: typeof AuthenticatedImport
     }
   }
 }
@@ -84,12 +94,14 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
-  CalendarRoute,
-  CategoriesRoute,
-  HomeRoute,
+  AuthenticatedRoute.addChildren([
+    AuthenticatedCalendarRoute,
+    AuthenticatedCategoriesRoute,
+    AuthenticatedHomeRoute,
+    AuthenticatedUserIdRoute,
+  ]),
   SigninRoute,
   SignupRoute,
-  UserIdRoute,
 ])
 
 /* prettier-ignore-end */

@@ -15,7 +15,7 @@ export const useSignInGoogle = () => {
         .collection(Collections.Users)
         .authWithOAuth2<UsersResponse>({ provider: 'google' }),
     onSuccess: () => {
-      navigate({ to: '/home' });
+      // navigate({ to: '/home' });
       successToast({ description: 'Successful authentication' });
     },
     onError: error => {

@@ -1,11 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { authRedirect } from '@helpers/index';
+import { redirectTo } from '@/helpers';
+import { useAuthCheck } from '@/hooks';
 
-export const Route = createFileRoute('/calendar')({
+export const Route = createFileRoute('/_authenticated/calendar')({
   component: About,
-  beforeLoad: () => {
-    authRedirect();
-  },
 });
 
 function About() {

@@ -1,10 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { CategoriesPage } from '@pages/CategoriesPage/CategoriesPage';
-import { authRedirect } from '@helpers/index';
+import { redirectTo } from '@/helpers';
+import { useAuthCheck } from '@/hooks';
 
-export const Route = createFileRoute('/categories')({
+export const Route = createFileRoute('/_authenticated/categories')({
   component: CategoriesPage,
-  beforeLoad: () => {
-    authRedirect();
-  },
 });

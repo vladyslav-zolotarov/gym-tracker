@@ -7,9 +7,9 @@ import {
 import { useAuthCheck } from '@hooks/index';
 
 export const UserPage = () => {
-  const auth = useAuthCheck();
+  const { isAuthenticated, user } = useAuthCheck();
 
-  if (!auth) {
+  if (!isAuthenticated) {
     return (
       <Heading
         size='lg'
@@ -24,12 +24,12 @@ export const UserPage = () => {
       <Flex
         direction='column'
         gap='2rem'>
-        <UserInformation {...auth} />
+        <UserInformation user={user} />
 
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           gap='2rem'>
-          <ChangeUserInformationForm {...auth} />
+          <ChangeUserInformationForm user={user} />
           <ResetPasswordForm />
         </SimpleGrid>
       </Flex>
