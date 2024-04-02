@@ -1,6 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { redirectTo } from '@helpers/index';
-import { useAuthCheck } from '@/hooks';
 
 export const Route = createFileRoute('/_authenticated/home')({
   component: Index,

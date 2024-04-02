@@ -15,7 +15,7 @@ import {
   AsideUser,
   AsideMenuAdditional,
 } from '@components/AsideNavBar';
-import { useAuthCheck } from '@hooks/index';
+import { useAuth } from '@/contexts/auth.context';
 
 export const AsideNavBar = ({
   isOpen,
@@ -25,7 +25,7 @@ export const AsideNavBar = ({
   onClose: () => void;
 }) => {
   const { colorMode } = useColorMode();
-  const { user } = useAuthCheck();
+  const { user } = useAuth();
   const btnRef = useRef(null);
 
   const [isDesktop] = useMediaQuery('(min-width: 80em)');

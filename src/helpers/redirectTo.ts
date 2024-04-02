@@ -1,17 +1,21 @@
-import { redirect } from '@tanstack/react-router';
+import { ParsedLocation, redirect } from '@tanstack/react-router';
+
+type redirectProps = {
+  isAuthenticated: boolean;
+  route: string;
+  location?: ParsedLocation<{}>;
+};
 
 export const redirectTo = ({
   isAuthenticated,
   route,
-}: {
-  isAuthenticated: boolean;
-  route: string;
-}) => {
+  location,
+}: redirectProps) => {
   if (isAuthenticated) {
     throw redirect({
       to: route,
       search: {
-        redirect: location.href,
+        redirect: location ? location.href : '',
       },
     });
   }

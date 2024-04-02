@@ -31,6 +31,7 @@ export default defineConfig(({ mode }) => {
         '@helpers': path.resolve(__dirname, './src/helpers'),
         '@services': path.resolve(__dirname, './src/services'),
         '@hooks': path.resolve(__dirname, './src/hooks'),
+        '@contexts': path.resolve(__dirname, './src/contexts'),
       },
     },
   };

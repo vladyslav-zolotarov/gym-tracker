@@ -1,13 +1,13 @@
+import { useAuth } from '@/contexts/auth.context';
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react';
 import {
   ChangeUserInformationForm,
   UserInformation,
   ResetPasswordForm,
 } from '@components/User/index';
-import { useAuthCheck } from '@hooks/index';
 
 export const UserPage = () => {
-  const { isAuthenticated, user } = useAuthCheck();
+  const { isAuthenticated, user } = useAuth();
 
   if (!isAuthenticated) {
     return (

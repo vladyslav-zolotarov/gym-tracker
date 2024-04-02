@@ -3,11 +3,13 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { useErrorToast, useSuccessToast } from '@hooks/index';
 import { Collections } from '@/types/pocketbase-types';
+import { useAuthUser } from '@/contexts/auth.context';
 
 export const useLogOut = () => {
   const navigate = useNavigate();
   const successToast = useSuccessToast();
   const errorToast = useErrorToast();
+  const { removeAuthUser } = useAuthUser();
 
   return useMutation({
     mutationFn: async () => {
@@ -16,6 +18,7 @@ export const useLogOut = () => {
     },
     onSuccess: () => {
       navigate({ to: '/signin' });
+      removeAuthUser();
       successToast({});
     },
     onError: error => {
